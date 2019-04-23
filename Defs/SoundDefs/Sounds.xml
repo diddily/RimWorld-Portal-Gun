@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<SoundDef>
+		<defName>ShotSecondaryPortal</defName>
+		<eventNames />
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Things/shoot_secondary</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>33.52942</min>
+					<max>33.52942</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.6152174</min>
+					<max>1.042391</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+  <SoundDef>
+		<defName>ShotPrimaryPortal</defName>
+		<eventNames />
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Things/shoot_primary</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>33.52942</min>
+					<max>33.52942</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.6152174</min>
+					<max>1.042391</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+  
+	<SoundDef>
+		<defName>ShotPortalOpen</defName>
+		<eventNames />
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Clip">
+						<clipPath>Things/portal_open</clipPath>
+					</li>
+				</grains>
+				<volumeRange>
+					<min>50.58823</min>
+					<max>50.58823</max>
+				</volumeRange>
+				<pitchRange>
+					<min>0.6152174</min>
+					<max>1.042391</max>
+				</pitchRange>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+  <SoundDef>
+    <defName>PG_PortalGunOutOfPower</defName>
+    <eventNames />
+    <context>MapOnly</context>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Things/portal_powerdown</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>33.52942</min>
+          <max>33.52942</max>
+        </volumeRange>
+        <pitchRange>
+          <min>0.6152174</min>
+          <max>1.042391</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>PG_ChargeLoop</defName>
+    <sustain>True</sustain>
+    <context>MapOnly</context>
+    <eventNames />
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Things/portal_charging</clipPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>21.7647</min>
+          <max>22.94118</max>
+        </volumeRange>
+        <distRange>
+          <min>0.88235</min>
+          <max>30.70592</max>
+        </distRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

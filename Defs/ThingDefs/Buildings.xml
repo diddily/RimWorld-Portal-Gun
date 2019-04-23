@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Abstract="True" Name="PG_PortalBase" ParentName="BuildingBase">
+
+		<statBases>
+			<MaxHitPoints>1</MaxHitPoints>
+			<WorkToBuild>0</WorkToBuild>
+			<Flammability>0.0</Flammability>
+			<Mass>0</Mass>
+		</statBases>
+
+    <building>
+      <claimable>false</claimable>
+    </building>
+    <graphicData>
+      <texPath>Things/Buildings/Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1,1</drawSize>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunPortal">
+        <wallFrontGraphic>
+          <texPath>Things/Buildings/PortalFront</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.3,1.3</drawSize>
+        </wallFrontGraphic>
+        <wallBackGraphic>
+          <texPath>Things/Buildings/PortalBackOn</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>1.3,1.3</drawSize>
+        </wallBackGraphic>
+        <floorFrontGraphic>
+          <texPath>Things/Buildings/PortalFront_ground</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </floorFrontGraphic>
+        <floorBackGraphic>
+          <texPath>Things/Buildings/PortalBackOn_ground</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </floorBackGraphic>
+      </li>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<useHitPoints>false</useHitPoints>
+		<castEdgeShadows>false</castEdgeShadows>
+		<costList />
+		<size>(1,1)</size>
+		<tickerType>Normal</tickerType>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<rotatable>true</rotatable>
+		<selectable>true</selectable>
+		<stealable>false</stealable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<destroyable>true</destroyable>
+		<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+		<clearBuildingArea>false</clearBuildingArea>
+		<hasInteractionCell>false</hasInteractionCell>
+		<thingClass>Portal_Gun.Buildings.Building_PortalGunPortal</thingClass>
+	</ThingDef>
+    
+	<ThingDef Name="PG_WallPortal" ParentName="PG_PortalBase">
+		<defName>PG_WallPortal</defName>
+		<label>Portal</label>
+    <building>
+      <isEdifice>false</isEdifice>
+      <canPlaceOverWall>true</canPlaceOverWall>
+    </building>
+		<description>A portal that was shot on a wall.</description>
+    <altitudeLayer>Item</altitudeLayer>
+	</ThingDef>
+
+  <ThingDef Name="PG_FloorPortal" ParentName="PG_PortalBase">
+    <defName>PG_FloorPortal</defName>
+    <label>Portal</label>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <description>A portal that was shot on the floor.</description>
+    <altitudeLayer>Shadows</altitudeLayer>
+    <passability>Standable</passability>
+  </ThingDef>
+  <ThingDef Name="PG_PortalEntry" ParentName="BuildingBase">
+    <defName>PG_PortalEntry</defName>
+    <thingClass>Portal_Gun.Buildings.Building_PortalGunPortalEntry</thingClass>
+    <label>Portal entry</label>
+    <description>Portal Entry</description>
+    <graphicData>
+      <texPath>Things/Buildings/Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1,1</drawSize>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Floor</altitudeLayer>
+    <passability>Standable</passability>
+    <destroyable>false</destroyable>
+    <rotatable>false</rotatable>
+    <clearBuildingArea>false</clearBuildingArea>
+    <selectable>false</selectable>
+    <coversFloor>false</coversFloor>
+    <useHitPoints>false</useHitPoints>
+    <tradeability>None</tradeability>
+    <isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>PG_Dummy</defName>
+    <thingClass>Building</thingClass>
+    <label>dummy</label>
+    <description>dummy</description>
+    <graphicData>
+      <texPath>Things/Buildings/Empty</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1,1</drawSize>
+    </graphicData>
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <statBases>
+      <Flammability>0</Flammability>
+    </statBases>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Floor</altitudeLayer>
+    <passability>Standable</passability>
+    <destroyable>true</destroyable>
+    <rotatable>false</rotatable>
+    <clearBuildingArea>false</clearBuildingArea>
+    <selectable>false</selectable>
+    <coversFloor>false</coversFloor>
+    <useHitPoints>false</useHitPoints>
+    <tradeability>None</tradeability>
+    <isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>PG_PortalGunCharger</defName>
+    <thingClass>Portal_Gun.Buildings.Building_PortalGunCharger</thingClass>
+    <label>Portal Gun charger</label>
+    <description>Allows for the charging of nearby Portal Guns.</description>
+    <size>(1,1)</size>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <tickerType>Normal</tickerType>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <graphicData>
+      <texPath>Things/Buildings/PortalChargeBaseOff</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <castEdgeShadows>false</castEdgeShadows>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>8</pathCost>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Mass>4</Mass>
+    </statBases>
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+        <glowColor>(73,73,138,0)</glowColor>
+      </li>
+      <li Class="Portal_Gun.Comps.CompPowerPlantProperties_PortalGunCharger">
+        <compClass>Portal_Gun.Comps.CompPowerPlant_PortalGunCharger</compClass>
+        <graphicOn>
+          <texPath>Things/Buildings/PortalChargeBaseOn</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+          
+        </graphicOn>
+        <graphicOff>
+          <texPath>Things/Buildings/PortalChargeBaseOff</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+          <drawSize>(1,1)</drawSize>
+        </graphicOff>
+        <basePowerConsumption>10</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <!--<li Class="CompProperties_Facility">
+        <maxSimultaneous>9</maxSimultaneous>
+      </li>-->
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>PG_PortalGun</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <fillPercent>0.2</fillPercent>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <designationCategory>Misc</designationCategory>
+    <surfaceType>Item</surfaceType>
+  </ThingDef>
+</Defs>

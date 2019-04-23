@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <!-- Templates -->
+  <ThingDef Name="PG_BaseModule" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <Mass>0.6</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>-4</Beauty>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <tickerType>Never</tickerType>
+    <alwaysHaulable>true</alwaysHaulable>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Insert module</useLabel>
+        <useDuration>0</useDuration>
+      </li>
+      <li Class="CompProperties_Targetable">
+        <compClass>Portal_Gun.Comps.CompTargetable_PortalGun</compClass>
+      </li>
+      <li>
+        <compClass>Portal_Gun.Comps.CompTargetEffect_AddModule</compClass>
+      </li>
+    </comps>
+    <pathCost>10</pathCost>
+    <tradeability>Sellable</tradeability>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+  </ThingDef>
+
+  <ThingDef Name="PG_BasicModule" ParentName="PG_BaseModule" Abstract="True">
+    <statBases>
+      <WorkToMake>10000</WorkToMake>
+      <MarketValue>1000</MarketValue>
+    </statBases>
+    <techLevel>Spacer</techLevel>
+  </ThingDef>
+
+  <ThingDef Name="PG_IntermediateModule" ParentName="PG_BaseModule" Abstract="True">
+    <statBases>
+      <WorkToMake>40000</WorkToMake>
+      <MarketValue>4000</MarketValue>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="PG_AdvancedModule" ParentName="PG_BaseModule" Abstract="True">
+    <statBases>
+      <WorkToMake>60000</WorkToMake>
+      <MarketValue>6000</MarketValue>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+  </ThingDef>
+
+  <!-- Basic -->
+  <ThingDef ParentName="PG_BasicModule">
+    <defName>PG_BatteryModule</defName>
+    <label>Portal gun battery module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <powerStorage>50.0</powerStorage>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="PG_BasicModule">
+    <defName>PG_PowerEfficencyModule</defName>
+    <label>Portal gun power efficiency module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <powerEfficiency>0.2</powerEfficiency>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Intermediate -->
+  <ThingDef ParentName="PG_IntermediateModule">
+    <defName>PG_GLaDOSModule</defName>
+    <label>GLaDOS module</label>
+    <description>Potato GLaDOS.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <rangeMult>2.0</rangeMult>
+        <inaccuracyFactor>0.5</inaccuracyFactor>
+        <powerEfficiency>0.1</powerEfficiency>
+        <preventSolarFlare>true</preventSolarFlare>
+        <unique>true</unique>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PG_IntermediateModule">
+    <defName>PG_ViolenceCoreModule</defName>
+    <label>Adventure module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <allowViolence>true</allowViolence>
+        <unique>true</unique>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Advanced -->
+
+  <ThingDef ParentName="PG_AdvancedModule">
+    <defName>PG_AdventureCoreModule</defName>
+    <label>adventure module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <allowWorldPortals>true</allowWorldPortals>
+        <unique>true</unique>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="PG_AdvancedModule">
+    <defName>PG_VanometricPowerModule</defName>
+    <label>vanometric power module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <powerOutput>1000</powerOutput>
+        <unique>true</unique>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

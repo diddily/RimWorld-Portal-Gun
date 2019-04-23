@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ResearchProjectDef>
+	  <defName>PG_BasicsResearch</defName>
+	  <label>basics</label>
+	  <tab>PG_ResearchTab</tab>
+	  <techLevel>Spacer</techLevel>
+	  <description>.</description>
+	  <baseCost>1000</baseCost>
+	  <prerequisites>
+	    <li>MicroelectronicsBasics</li>
+	  </prerequisites>
+		<researchViewX>0</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>PG_BasicModulesResearch</defName>
+		<label>basic modules</label>
+		<tab>PG_ResearchTab</tab>
+		<techLevel>Spacer</techLevel>
+		<description>.</description>
+		<baseCost>500</baseCost>
+		<prerequisites>
+		  <li>PG_BasicsResearch</li>
+		</prerequisites>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0</researchViewY>
+	</ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PG_IntermediateModulesResearch</defName>
+    <label>intermediate modules</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>1500</baseCost>
+    <prerequisites>
+      <li>PG_BasicModulesResearch</li>
+    </prerequisites>
+    <researchViewX>3</researchViewX>
+    <researchViewY>0</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PG_AdvancedModulesResearch</defName>
+    <label>advanced modules</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>2500</baseCost>
+    <prerequisites>
+      <li>PG_IntermediateModulesResearch</li>
+    </prerequisites>
+    <researchViewX>5</researchViewX>
+    <researchViewY>0</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PG_BatteryModuleResearch</defName>
+    <label>battery module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>750</baseCost>
+    <prerequisites>
+      <li>PG_BasicModulesResearch</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <defName>PG_PowerEfficencyModuleResearch</defName>
+    <label>power efficiency module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>750</baseCost>
+    <prerequisites>
+      <li>PG_BasicModulesResearch</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>2</researchViewY>
+  </ResearchProjectDef>
+
+
+  <ResearchProjectDef>
+    <defName>PG_GLaDOSModuleResearch</defName>
+    <label>GLaDOS module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>2000</baseCost>
+    <prerequisites>
+      <li>PG_IntermediateModulesResearch</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <defName>PG_ViolenceCoreModuleResearch</defName>
+    <label>violence core module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>2000</baseCost>
+    <prerequisites>
+      <li>PG_IntermediateModulesResearch</li>
+    </prerequisites>
+    <researchViewX>4</researchViewX>
+    <researchViewY>2</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <defName>PG_AdventureCoreModuleResearch</defName>
+    <label>adventure core module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>3500</baseCost>
+    <prerequisites>
+      <li>PG_AdvancedModulesResearch</li>
+    </prerequisites>
+    <researchViewX>6</researchViewX>
+    <researchViewY>1</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PG_VanometricPowerModuleResearch</defName>
+    <label>vanometric power module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>3500</baseCost>
+    <prerequisites>
+      <li>PG_AdvancedModulesResearch</li>
+    </prerequisites>
+    <researchViewX>6</researchViewX>
+    <researchViewY>2</researchViewY>
+  </ResearchProjectDef>
+</Defs>

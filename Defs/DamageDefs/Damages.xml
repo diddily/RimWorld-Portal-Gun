@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<DamageDef Name="PG_DamagePortalBase" Abstract="True">
+		<harmsHealth>false</harmsHealth>
+		<makesBlood>false</makesBlood>
+	</DamageDef>
+
+	<DamageDef ParentName="PG_DamagePortalBase">
+		<defName>PG_DamageInvoluntaryPortal</defName>
+		<label>Involuntarily portaled</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} did not survive being portaled.</deathMessage>
+		<defaultDamage>0</defaultDamage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Bruise</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+		<explosionCellMote>Mote_BlastDry</explosionCellMote>
+		<soundExplosion>ShotPortalOpen</soundExplosion>
+		<combatLogRules>Damage_Stun</combatLogRules>
+	</DamageDef>
+	
+</Defs>

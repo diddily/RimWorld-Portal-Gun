@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BaseMakeableGun" Name="PG_PortalGun">
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+    <defName>PG_PortalGun</defName>
+    <label>Portal Gun</label>
+    <description>The Aperture Science Handheld Portal Device, originally marketed in the 1950s as an Aperture Science Portable Quantum Tunneling Device, also commonly known as a Portal Gun or by its acronym, "ASHPD", is an experimental tool used to create two portals through which objects can pass.</description>
+    <thingClass>Portal_Gun.Items.Item_PortalGun</thingClass>
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+    <techLevel>Spacer</techLevel>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+      <Mass>4.2</Mass>
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.85</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>2.7</RangedWeapon_Cooldown>
+      <WorkToMake>30000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <researchPrerequisite>PG_BasicsResearch</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tickerType>Normal</tickerType>
+    <costList>
+      <Plasteel>60</Plasteel>
+      <Silver>200</Silver>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <tradeability>Sellable</tradeability>
+    <tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+
+    <building>
+      <fixedStorageSettings />
+    </building>
+    <verbs>
+      <li>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+          <canTargetPawns>true</canTargetPawns>
+          <canTargetBuildings>true</canTargetBuildings>
+          <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+          <neverTargetDoors>true</neverTargetDoors>
+        </targetParams>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0.5</warmupTime>
+        <noiseRadius>6</noiseRadius>
+        <range>20</range>
+        <burstShotCount>1</burstShotCount>
+        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+        <targetable>true</targetable>
+        <soundCast>ShotPrimaryPortal</soundCast>
+        <onlyManualCast>false</onlyManualCast>
+        <ai_IsWeapon>true</ai_IsWeapon>
+        <consumeFuelPerShot>0.01</consumeFuelPerShot>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGun">
+        <portalPowerDraw>400</portalPowerDraw>
+        <basePowerDraw>5</basePowerDraw>
+        <rechargePowerDraw>150</rechargePowerDraw>
+        
+        <secondaryGraphic>
+          <texPath>Things/Guns/PortalSecondary</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </secondaryGraphic>
+        <secondaryGLaDOSGraphic>
+          <texPath>Things/Guns/PortalSecondaryPotato</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </secondaryGLaDOSGraphic>
+        <primaryGraphic>
+          <texPath>Things/Guns/PortalPrimary</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </primaryGraphic>
+        <primaryGLaDOSGraphic>
+          <texPath>Things/Guns/PortalPrimaryPotato</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </primaryGLaDOSGraphic>
+        <offGraphic>
+          <texPath>Things/Guns/PortalOff</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </offGraphic>
+        <offGLaDOSGraphic>
+          <texPath>Things/Guns/PortalOffPotato</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </offGLaDOSGraphic>
+        <verbs>
+          <li>
+            <targetParams>
+              <canTargetLocations>true</canTargetLocations>
+              <canTargetPawns>false</canTargetPawns>
+              <canTargetBuildings>true</canTargetBuildings>
+              <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+              <neverTargetDoors>true</neverTargetDoors>
+            </targetParams>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>PG_PortalGun_BulletPrimary</defaultProjectile>
+            <warmupTime>0.1</warmupTime>
+            <noiseRadius>6</noiseRadius>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <targetable>true</targetable>
+            <soundCast>ShotPrimaryPortal</soundCast>
+            <onlyManualCast>true</onlyManualCast>
+            <ai_IsWeapon>false</ai_IsWeapon>
+            <accuracyTouch>0.95</accuracyTouch>
+            <accuracyShort>0.90</accuracyShort>
+            <accuracyMedium>0.86</accuracyMedium>
+            <accuracyLong>0.85</accuracyLong>
+            <consumeFuelPerShot>0.01</consumeFuelPerShot>
+          </li>
+
+          <li>
+            <targetParams>
+              <canTargetLocations>true</canTargetLocations>
+              <canTargetPawns>false</canTargetPawns>
+              <canTargetBuildings>true</canTargetBuildings>
+              <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+              <neverTargetDoors>true</neverTargetDoors>
+            </targetParams>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>PG_PortalGun_BulletSecondary</defaultProjectile>
+            <warmupTime>0.1</warmupTime>
+            <noiseRadius>6</noiseRadius>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <targetable>true</targetable>
+            <soundCast>ShotSecondaryPortal</soundCast>
+            <onlyManualCast>true</onlyManualCast>
+            <ai_IsWeapon>false</ai_IsWeapon>
+            <accuracyTouch>0.95</accuracyTouch>
+            <accuracyShort>0.90</accuracyShort>
+            <accuracyMedium>0.86</accuracyMedium>
+            <accuracyLong>0.85</accuracyLong>
+            <consumeFuelPerShot>0.01</consumeFuelPerShot>
+          </li>
+        </verbs>
+    </li>
+      <li Class="CompProperties_Facility">
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+      <!--<li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>PG_PortalGunCharger</li>
+        </linkableFacilities>-->
+      <li Class="CompProperties_Refuelable">
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelConsumptionRate>0.0</fuelConsumptionRate>
+        <initialFuelPercent>1</initialFuelPercent>
+        <fuelCapacity>100.0</fuelCapacity>
+        <showFuelGizmo>false</showFuelGizmo>
+        <fuelIconPath>UI/Overlays/NeedsPower</fuelIconPath>
+        <fuelFilter></fuelFilter>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <!-- Projectiles -->
+  <ThingDef Abstract="True" Name="PG_PortalGun_ProjectileBase">
+    <thingClass>Portal_Gun.Projectiles.Projectile_PortalGun</thingClass>
+    <label>Portal Projectile</label>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <projectile>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>35</speed>
+      <soundExplode>ShotPortalOpen</soundExplode>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="PG_PortalGun_ProjectileBase">
+    <defName>PG_PortalGun_BulletPrimary</defName>
+    <description>Create portal</description>
+    <graphicData>
+      <texPath>Things/Projectiles/Proj_Primary</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="PG_PortalGun_ProjectileBase">
+    <defName>PG_PortalGun_BulletSecondary</defName>
+    <description>Create portal</description>
+    <graphicData>
+      <texPath>Things/Projectiles/Proj_Secondary</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+  </ThingDef>
+
+  <!-- Shells -->
+  <ThingDef>
+    <thingClass>ThingWithComps</thingClass>
+    <defName>PG_PortalGun_ShellPrimary</defName>
+    <label>portal shell</label>
+    <description>portal shell</description>
+    <graphicData>
+      <texPath>Things/Projectiles/Proj_Portal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
+    <projectileWhenLoaded>PG_PortalGun_BulletPrimary</projectileWhenLoaded>
+  </ThingDef>
+  
+  <ThingDef>
+    <thingClass>ThingWithComps</thingClass>
+    <defName>PG_PortalGun_ShellSecondary</defName>
+    <label>portal shell</label>
+    <description>portal shell</description>
+    <graphicData>
+      <texPath>Things/Projectiles/Proj_Portal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectileWhenLoaded>PG_PortalGun_BulletSecondary</projectileWhenLoaded>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,26 @@
+<Defs>
+  <JobDef>
+    <defName>PG_JobTraversePortal</defName>
+    <driverClass>Portal_Gun.Jobs.JobDriver_TraversePortal</driverClass>
+    <reportString>Entering portal</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>PG_JobInsertModule</defName>
+    <driverClass>Portal_Gun.Jobs.JobDriver_InsertModule</driverClass>
+    <reportString>Inserting moudle</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>PG_JobRemoveModule</defName>
+    <driverClass>Portal_Gun.Jobs.JobDriver_RemoveModule</driverClass>
+    <reportString>Removing moudle</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>PG_UseModule</defName>
+    <driverClass>JobDriver_UseItem</driverClass>
+    <reportString>grabbing TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+ </Defs>
