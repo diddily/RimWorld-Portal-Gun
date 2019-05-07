@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
- 
+  <PG_PortalCollapse>{0} collapsed: {1}</PG_PortalCollapse>
+  <PG_PortalCreationFailed>{0} creation failed: {1}</PG_PortalCreationFailed>
+
+  <PG_InsertModule>Insert module</PG_InsertModule>
+  <PG_RemoveModule>Remove module</PG_RemoveModule>
+  <PG_NotEnoughPower>Not enough power.</PG_NotEnoughPower>
+  <PG_RanOutOfPower>Ran out of power.</PG_RanOutOfPower>
+  <PG_SurfaceDestroyed>Surface destroyed.</PG_SurfaceDestroyed>
+  <PG_SurfaceChanged>Surface changed.</PG_SurfaceChanged>
+  <PG_SurfaceIncompatible_NotSolid>Surface incompatible (not solid).</PG_SurfaceIncompatible_NotSolid>
+  <PG_SurfaceIncompatible_TooRough>Surface incompatible (too rough).</PG_SurfaceIncompatible_TooRough>
+  <PG_SurfaceIncompatible_TooSoft>Surface incompatible (too soft).</PG_SurfaceIncompatible_TooSoft>
+  <PG_SurfaceIncompatible_TooLoose>Surface incompatible (too loose).</PG_SurfaceIncompatible_TooLoose>
+  <PG_SurfaceIncompatible_TooWet>Surface incompatible (too wet).</PG_SurfaceIncompatible_TooWet>
+  <PG_SurfaceIncompatible_AlreadyOccupied>Surface incompatible (already occupied).</PG_SurfaceIncompatible_AlreadyOccupied>
+  <PG_SurfaceIncompatible_PortalAlreadyPresent>Surface incompatible (portal already present).</PG_SurfaceIncompatible_PortalAlreadyPresent>
+  <PG_SurfaceIncompatible_LocationBlocked>Surface incompatible (location blocked).</PG_SurfaceIncompatible_LocationBlocked>
+  <PG_TooFar>Distance between portals is too far.</PG_TooFar>
+
 </LanguageData>

@@ -41,7 +41,7 @@
     <building>
       <fixedStorageSettings />
     </building>
-    <verbs>
+    <!--<verbs>
       <li>
         <targetParams>
           <canTargetLocations>true</canTargetLocations>
@@ -63,7 +63,7 @@
         <ai_IsWeapon>true</ai_IsWeapon>
         <consumeFuelPerShot>0.01</consumeFuelPerShot>
       </li>
-    </verbs>
+    </verbs>-->
     <comps>
       <li Class="Portal_Gun.Comps.CompProperties_PortalGun">
         <portalPowerDraw>400</portalPowerDraw>

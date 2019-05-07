@@ -84,6 +84,20 @@
     <researchViewY>2</researchViewY>
   </ResearchProjectDef>
 
+  <ResearchProjectDef>
+    <defName>PG_ImprovedSurfaceModuleResearch</defName>
+    <label>advanced surface module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>750</baseCost>
+    <prerequisites>
+      <li>PG_BasicModulesResearch</li>
+    </prerequisites>
+    <researchViewX>2</researchViewX>
+    <researchViewY>3</researchViewY>
+  </ResearchProjectDef>
+
 
   <ResearchProjectDef>
     <defName>PG_GLaDOSModuleResearch</defName>
@@ -139,5 +153,19 @@
     </prerequisites>
     <researchViewX>6</researchViewX>
     <researchViewY>2</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <defName>PG_AdvancedSurfaceModuleResearch</defName>
+    <label>advanced surface module</label>
+    <tab>PG_ResearchTab</tab>
+    <techLevel>Spacer</techLevel>
+    <description>.</description>
+    <baseCost>3500</baseCost>
+    <prerequisites>
+      <li>PG_AdvancedModulesResearch</li>
+    </prerequisites>
+    <researchViewX>6</researchViewX>
+    <researchViewY>3</researchViewY>
   </ResearchProjectDef>
 </Defs>

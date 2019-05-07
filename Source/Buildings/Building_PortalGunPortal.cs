@@ -71,8 +71,19 @@ namespace Portal_Gun.Buildings
                 }
             }
         }
+
+        public bool IsLocalPortal
+        {
+            get
+            {
+                return LinkedPortal != null && LinkedPortal.worldTile == worldTile;
+            }
+        }
+
         public Item_PortalGun linkedGun;
         public Building_PortalGunPortalEntry linkedEntry;
+        public int worldTile = -1;
+        public float powerDrawScale = 1.0f;
         private bool cleaningUp;
         private bool __isWall;
         public bool IsWall { get { return __isWall; } set { __isWall = value; } }
@@ -122,6 +133,7 @@ namespace Portal_Gun.Buildings
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
+            worldTile = map.Tile;
             base.SpawnSetup(map, respawningAfterLoad);
         }
 
@@ -176,6 +188,8 @@ namespace Portal_Gun.Buildings
             Scribe_Values.Look(ref __isWall, "__isWall");
             Scribe_Values.Look(ref __floorRotation, "__floorRotation");
             Scribe_Values.Look(ref __ownsRegion, "__ownsRegion");
+            Scribe_Values.Look(ref worldTile, "worldTile", -1);
+            Scribe_Values.Look(ref powerDrawScale, "powerDrawScale", 1);
             Scribe_References.Look(ref __linkedPortal, "__linkedPortal");
             Scribe_References.Look(ref linkedGun, "linkedGun");
             Scribe_References.Look(ref linkedEntry, "linkedEntry");

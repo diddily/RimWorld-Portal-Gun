@@ -16,25 +16,23 @@ namespace Portal_Gun.Projectiles
 
         protected override void Impact(Thing hitThing)
         {
-            if (hitThing == null || (hitThing.def == ThingDefOf.Wall || hitThing.def.IsSmoothed))
+            Vector3 offset = (origin - ExactPosition);
+            IntVec3 position = (hitThing != null ? hitThing.Position : Position);
+            if (launcherGun.CreatePortal(this, offset, position, Map))
             {
-                Vector3 offset = (origin - ExactPosition);
-                IntVec3 position = (hitThing != null ? hitThing.Position : Position);
-                if (launcherGun.CreatePortal(this, offset, position, Map, hitThing != null))
+                if (def.projectile.soundExplode != null)
                 {
-                    if (def.projectile.soundExplode != null)
+                    if (hitThing != null)
                     {
-                        if (hitThing != null)
-                        {
-                            def.projectile.soundExplode.PlayOneShot(new TargetInfo(hitThing));
-                        }
-                        else
-                        {
-                            def.projectile.soundExplode.PlayOneShot(new TargetInfo(Position, Map, false));
-                        }
+                        def.projectile.soundExplode.PlayOneShot(new TargetInfo(hitThing));
+                    }
+                    else
+                    {
+                        def.projectile.soundExplode.PlayOneShot(new TargetInfo(Position, Map, false));
                     }
                 }
             }
+
             base.Impact(hitThing);
         }
 

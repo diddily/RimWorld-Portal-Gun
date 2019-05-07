@@ -11,6 +11,7 @@ namespace Portal_Gun.Comps
         public float powerOutput;
         public float powerEfficiency;
         public float powerStorage;
+        public int surfaceLevel;
 
         bool preventSolarFlare;
         bool allowViolence;

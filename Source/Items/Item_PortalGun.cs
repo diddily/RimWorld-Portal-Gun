@@ -91,6 +91,13 @@ namespace Portal_Gun.Items
             }
         }
 
+        public bool HasAdventureCoreModule
+        {
+            get
+            {
+                return innerContainer.Any(t => t.def == PG_DefOf.PG_AdventureCoreModule);
+            }
+        }
         public bool HasViolenceCoreModule
         {
             get
@@ -104,6 +111,14 @@ namespace Portal_Gun.Items
             get
             {
                 return innerContainer.Any(t => t.def == PG_DefOf.PG_GLaDOSModule);
+            }
+        }
+
+        public int SurfaceLevel
+        {
+            get
+            {
+                return innerContainer.Count > 0 ? innerContainer.Select(t => t.TryGetComp<Comp_PortalGunModule>()).Max(pgm => pgm == null ? 0 : pgm.Props.surfaceLevel) : 0;
             }
         }
 
@@ -183,32 +198,90 @@ namespace Portal_Gun.Items
             base.Destroy(mode);
         }
 
-        public bool CreatePortal(Projectile_PortalGun projectile, Vector3 offset, IntVec3 targetPos, Map map, bool isWall)
+        public bool CreatePortal(Projectile_PortalGun projectile, Vector3 offset, IntVec3 targetPos, Map map)
         {
             if (projectile.def == PG_DefOf.PG_PortalGun_BulletSecondary)
             {
-                return CreatePortal(ref secondaryPortal, isWall, targetPos, map, offset, ref primaryPortal, true);
+                return CreatePortal(ref secondaryPortal, targetPos, map, offset, ref primaryPortal, true);
             }
             else
             {
-                return CreatePortal(ref primaryPortal, isWall, targetPos, map, offset, ref secondaryPortal, false);
+                return CreatePortal(ref primaryPortal, targetPos, map, offset, ref secondaryPortal, false);
             }
         }
 
-        private bool CreatePortal(ref Building_PortalGunPortal portal, bool isWall, IntVec3 location, Map map, Vector3 offset, ref Building_PortalGunPortal otherPortal, bool secondaryVal)
+        private bool CreatePortal(ref Building_PortalGunPortal portal, IntVec3 location, Map map, Vector3 offset, ref Building_PortalGunPortal otherPortal, bool secondaryVal)
         {
+            List<Thing> things = location.GetThingList(map);
+            bool isWall = things.Count(t => t.def.coversFloor) > 0;
+            bool obstructed = things.Count(t => !(t.def.coversFloor || (t.def.passability == Traversability.Standable && t.def.pathCost == 0 && t.def.fillPercent == 0))) > 0;
             ThingDef portalDef = isWall ? PG_DefOf.PG_WallPortal : PG_DefOf.PG_FloorPortal;
             bool success = true;
             float angleFlat = offset.AngleFlat();
             Rot4 rotation = Rot4.FromAngleFlat(offset.AngleFlat());
             IntVec3 facing = rotation.FacingCell;
             IntVec3 entryPos = location;
+            int requiredSurfaceLevel = 0;
+            string messageText = null;
+
+            if (obstructed)
+            {
+                messageText = "PG_SurfaceIncompatible_AlreadyOccupied";
+                success = false; 
+            }
+
             if (isWall)
             {
                 entryPos += facing;
+
+                bool tooRough = things.Count(t => (t.def.building != null && t.def.building.isNaturalRock == true) || t.def == ThingDefOf.CollapsedRocks) > 0;
+                bool notSolid = things.Count(t => t.def.fillPercent > 0 && t.def.fillPercent < 1) > 0;
+                if (success && notSolid)
+                {
+                    messageText = "PG_SurfaceIncompatible_NotSolid";
+                    success = false;
+                }
+                if (success && tooRough)
+                {
+                    messageText = "PG_SurfaceIncompatible_TooRough";
+                    requiredSurfaceLevel = 1;
+                }
             }
             else
             {
+                TerrainDef terrain = entryPos.GetTerrain(map);
+                if (terrain.BuildableByPlayer)
+                {
+                    if (terrain.IsCarpet)
+                    {
+                        messageText = "PG_SurfaceIncompatible_TooSoft";
+                        requiredSurfaceLevel = 2;
+                    }
+                }
+                else
+                {
+                    // Water never supports portals, anything else "wet" enough to be bridgeable can support portals at level 2
+                    if (terrain.IsWater)
+                    {
+                        messageText = "PG_SurfaceIncompatible_TooWet";
+                        success = false;
+                    }
+                    else if (terrain.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable", true)))
+                    {
+                        messageText = "PG_SurfaceIncompatible_TooWet";
+                        requiredSurfaceLevel = 2;
+                    }
+                    else if (terrain.smoothedTerrain != null || terrain.HasTag("Road"))
+                    {
+                        messageText = "PG_SurfaceIncompatible_TooRough";
+                        requiredSurfaceLevel = 1;
+                    }
+                    else if (terrain.affordances.Contains(TerrainAffordanceDefOf.Diggable))
+                    {
+                        messageText = "PG_SurfaceIncompatible_TooLoose";
+                        requiredSurfaceLevel = 2;
+                    }
+                }
                 rotation = Rot4.North;
             }
             //map.debugDrawer.FlashCell(entryPos, 0.55f, "firstTest", 100);
@@ -218,6 +291,7 @@ namespace Portal_Gun.Items
                 //Log.Message("Facing = " + facing + " Offset = " + offset);
                 if (!isWall)
                 {
+                    messageText = "PG_SurfaceIncompatible_LocationBlocked";
                     success = false;
                 }
                 else if (facing.z == 0)
@@ -247,6 +321,7 @@ namespace Portal_Gun.Items
                     }
                     else
                     {
+                        messageText = "PG_SurfaceIncompatible_LocationBlocked";
                         success = false;
                     }
                 }
@@ -255,10 +330,36 @@ namespace Portal_Gun.Items
                     rotation = Rot4.FromIntVec3(facing);
                     entryPos = location + facing;
                     //map.debugDrawer.FlashCell(entryPos, 0.22f, "secondTest", 100);
-                    success = !GenGrid.Impassable(entryPos, map);
+                    
+                    if (!GenGrid.Impassable(entryPos, map))
+                    {
+                        messageText = "PG_SurfaceIncompatible_LocationBlocked";
+                        success = false;
+                    }
                 }
             }
 
+            if (success && SurfaceLevel < requiredSurfaceLevel)
+            {
+                success = false;
+            }
+
+            if (success && (otherPortal != null && otherPortal.worldTile != map.Tile && !HasAdventureCoreModule))
+            {
+                messageText = "PG_TooFar";
+                success = false;
+            }
+
+            if (success && things.Any(t => t.def == portalDef && t.Rotation == rotation))
+            {
+                messageText = "PG_SurfaceIncompatible_LocationBlocked";
+                success = false;
+            }
+
+            if (!success && messageText != null)
+            {
+                Messages.Message(string.Format("PG_PortalCreationFailed".Translate(), portalDef.LabelCap, messageText.Translate()), this, MessageTypeDefOf.RejectInput, false);
+            }
 
             if (success)
             {
@@ -272,6 +373,14 @@ namespace Portal_Gun.Items
                 portal.SetFaction(SpawnedParentOrMe.Faction);
                 portal.IsWall = isWall;
                 portal.FloorRotation = angleFlat;
+                if (requiredSurfaceLevel == 2)
+                {
+                    portal.powerDrawScale = 1.25f;
+                }
+                else if (requiredSurfaceLevel == 1)
+                {
+                    portal.powerDrawScale = 1.125f;
+                }
                 if (secondaryVal)
                 {
                     portal.DrawColor = Building_PortalGunPortal.Orange.ToColor;
@@ -322,11 +431,11 @@ namespace Portal_Gun.Items
             __powerRequired = compPortalGun.PG_Props.basePowerDraw;
             if (primaryPortal != null)
             {
-                __powerRequired += compPortalGun.PG_Props.portalPowerDraw;
+                __powerRequired += compPortalGun.PG_Props.portalPowerDraw * primaryPortal.powerDrawScale;
             }
             if (secondaryPortal != null)
             {
-                __powerRequired += compPortalGun.PG_Props.portalPowerDraw;
+                __powerRequired += compPortalGun.PG_Props.portalPowerDraw * secondaryPortal.powerDrawScale;
             }
 
             __powerCharging = 0;

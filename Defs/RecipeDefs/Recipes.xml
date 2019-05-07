@@ -91,6 +91,52 @@
     </recipeUsers>
     <researchPrerequisite>PG_PowerEfficencyModuleResearch</researchPrerequisite>
   </RecipeDef>
+
+  <RecipeDef>
+    <defName>PG_Craft_ImprovedSurfaceModule</defName>
+    <label>craft improved surface module</label>
+    <description>Craft a improved surface module for a portal gun</description>
+    <jobString>Crafting</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Repair</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>70</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <PG_ImprovedSurfaceModule>1</PG_ImprovedSurfaceModule>
+    </products>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers Inherit="False">
+      <li>FabricationBench</li>
+    </recipeUsers>
+    <researchPrerequisite>PG_ImprovedSurfaceModuleResearch</researchPrerequisite>
+  </RecipeDef>
   
   <!-- Intermediate -->
   
@@ -284,7 +330,7 @@
             <li>ComponentSpacer</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>1</count>
       </li>
       <li>
         <filter>
@@ -314,5 +360,59 @@
       <li>FabricationBench</li>
     </recipeUsers>
     <researchPrerequisite>PG_VanometricPowerModuleResearch</researchPrerequisite>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>PG_Craft_AdvancedSurfaceModule</defName>
+    <label>craft advanced surface module</label>
+    <description>Craft a advanced surface module for a portal gun</description>
+    <jobString>Crafting</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Repair</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </filter>
+        <count>40</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Gold</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentSpacer</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Uranium</li>
+        <li>Gold</li>
+        <li>ComponentSpacer</li>
+      </thingDefs>
+    </fixedIngredientFilter><products>
+      <PG_AdvancedSurfaceModule>1</PG_AdvancedSurfaceModule>
+    </products>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+    <recipeUsers Inherit="False">
+      <li>FabricationBench</li>
+    </recipeUsers>
+    <researchPrerequisite>PG_AdvancedSurfaceModuleResearch</researchPrerequisite>
   </RecipeDef>
 </Defs>

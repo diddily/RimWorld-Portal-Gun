@@ -107,6 +107,21 @@
     </comps>
   </ThingDef>
 
+  <ThingDef ParentName="PG_BasicModule">
+    <defName>PG_ImprovedSurfaceModule</defName>
+    <label>Portal gun improved surface module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <surfaceLevel>1</surfaceLevel>
+      </li>
+    </comps>
+  </ThingDef>
+
   <!-- Intermediate -->
   <ThingDef ParentName="PG_IntermediateModule">
     <defName>PG_GLaDOSModule</defName>
@@ -119,7 +134,7 @@
     <comps>
       <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
         <rangeMult>2.0</rangeMult>
-        <inaccuracyFactor>0.5</inaccuracyFactor>
+        <inaccuracyFactor>0.95</inaccuracyFactor>
         <powerEfficiency>0.1</powerEfficiency>
         <preventSolarFlare>true</preventSolarFlare>
         <unique>true</unique>
@@ -129,7 +144,7 @@
 
   <ThingDef ParentName="PG_IntermediateModule">
     <defName>PG_ViolenceCoreModule</defName>
-    <label>Adventure module</label>
+    <label>Violence core module</label>
     <description>.</description>
     <graphicData>
       <texPath>Things/Modules/POTaDOS</texPath>
@@ -173,6 +188,21 @@
       <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
         <powerOutput>1000</powerOutput>
         <unique>true</unique>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PG_AdvancedModule">
+    <defName>PG_AdvancedSurfaceModule</defName>
+    <label>Portal gun advanced surface module</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Modules/POTaDOS</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
+        <surfaceLevel>2</surfaceLevel>
       </li>
     </comps>
   </ThingDef>
