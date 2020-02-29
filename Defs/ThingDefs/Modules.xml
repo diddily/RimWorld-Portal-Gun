@@ -82,7 +82,7 @@
     <label>Portal gun battery module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/Battery</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -97,7 +97,7 @@
     <label>Portal gun power efficiency module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/PowerEfficency</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -112,7 +112,7 @@
     <label>Portal gun improved surface module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/ImprovedSurface</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -147,7 +147,7 @@
     <label>Violence core module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/ViolenceCore</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -165,7 +165,7 @@
     <label>adventure module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/AdventureCore</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -181,7 +181,7 @@
     <label>vanometric power module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/VanometricPower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
@@ -197,7 +197,7 @@
     <label>Portal gun advanced surface module</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Modules/POTaDOS</texPath>
+      <texPath>Things/Modules/AdvancedSurface</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>

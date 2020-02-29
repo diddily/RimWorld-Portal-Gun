@@ -12,11 +12,11 @@ namespace Portal_Gun.Comps
         public float powerEfficiency;
         public float powerStorage;
         public int surfaceLevel;
+        public bool unique;
+        public bool preventSolarFlare;
 
-        bool preventSolarFlare;
-        bool allowViolence;
-        bool allowWorldPortals;
-        bool unique;
+        public bool allowViolence;
+        public bool allowWorldPortals;
 
         public CompProperties_PortalGunModule()
         {

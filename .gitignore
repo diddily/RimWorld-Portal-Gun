@@ -18,8 +18,8 @@ bld/
 [Ll]og/
 
 # Junctions
-HugsLibsAssemblies/
-RimWorldAssemblies/
+ReferencedAssemblies_1.0/
+ReferencedAssemblies_1.1/
 
 # Visual Studio 2015 cache/options directory
 .vs/

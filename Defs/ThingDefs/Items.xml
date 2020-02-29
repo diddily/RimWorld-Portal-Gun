@@ -150,13 +150,12 @@
           </li>
         </verbs>
     </li>
-      <li Class="CompProperties_Facility">
-        <maxSimultaneous>1</maxSimultaneous>
-      </li>
-      <!--<li Class="CompProperties_AffectedByFacilities">
+
+      <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
           <li>PG_PortalGunCharger</li>
-        </linkableFacilities>-->
+        </linkableFacilities>
+      </li>
       <li Class="CompProperties_Refuelable">
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <fuelConsumptionRate>0.0</fuelConsumptionRate>
@@ -164,6 +163,8 @@
         <fuelCapacity>100.0</fuelCapacity>
         <showFuelGizmo>false</showFuelGizmo>
         <fuelIconPath>UI/Overlays/NeedsPower</fuelIconPath>
+        <fuelLabel>Power</fuelLabel>
+        <fuelGizmoLabel>Power</fuelGizmoLabel>
         <fuelFilter></fuelFilter>
       </li>
     </comps>

@@ -30,6 +30,9 @@ namespace Portal_Gun
         public static JobDef PG_JobInsertModule;
         public static JobDef PG_JobRemoveModule;
 
+        public static ResearchProjectDef PG_IntermediateModulesResearch;
+        public static ResearchProjectDef PG_AdvancedModulesResearch;
+
         public static SoundDef PG_ChargeLoop;
         public static SoundDef PG_PortalGunOutOfPower;
     }

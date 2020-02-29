@@ -56,7 +56,7 @@ namespace Portal_Gun.Stances
         public bool TryEnterNextPathCell()
         {
             Pawn pawn = Pawn;
-            if (pawn.pather.curPath.NodesLeftCount > 1)
+            if (pawn != null && pawn.pather != null && pawn.pather.curPath != null && pawn.pather.curPath.NodesLeftCount > 1)
             {
                 IntVec3 nextCell = pawn.pather.curPath.Peek(1);
                 Building building = nextCell.GetEdifice(pawn.Map);

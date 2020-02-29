@@ -40,7 +40,7 @@ namespace Portal_Gun.Jobs
         {
             //this.FailOnDespawnedOrNull(TargetIndex.A);
             this.FailOnDespawnedOrNull(TargetIndex.B);
-            
+            this.FailOn(() => !PortalGun.CanAcceptModule(Module));
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.ClosestTouch).FailOnDespawnedNullOrForbidden(TargetIndex.A).FailOnSomeonePhysicallyInteracting(TargetIndex.A);
             yield return Toils_Haul.StartCarryThing(TargetIndex.A, false, true, false);

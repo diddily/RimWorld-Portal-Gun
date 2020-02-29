@@ -25,7 +25,7 @@ namespace Portal_Gun.Comps
                 canTargetBuildings = false,
                 canTargetItems = true,
                 mapObjectTargetsMustBeAutoAttackable = false,
-                validator = ((TargetInfo x) => x.Thing != null && x.Thing is Item_PortalGun)
+                validator = ((TargetInfo x) => x.Thing != null && x.Thing is Item_PortalGun && ((Item_PortalGun) x.Thing).CanAcceptModule(this.parent))
             };
         }
 

@@ -23,21 +23,20 @@ namespace Portal_Gun.Harmony
             {
                 if (__instance.pawn.Rotation == Rot4.South)
                 {
-                    drawPos += new Vector3(0f, 0f, -0.88f);
+                    drawPos += new Vector3(0.1f, 0.0390625f * 0.5f, -0.22f);
                 }
                 else if (__instance.pawn.Rotation == Rot4.North)
                 {
-                    drawPos += new Vector3(0f, 0f, 0.4f);
+                    drawPos += new Vector3(0.1f, 0f, 0.22f);
                     behind = true;
                 }
                 else if (__instance.pawn.Rotation == Rot4.East)
                 {
-                    drawPos += new Vector3(0.8f, 0f, -0.88f);
+                    drawPos += new Vector3(0.8f, -0.0390625f * 0.5f, -0.1f);
                 }
                 else if (__instance.pawn.Rotation == Rot4.West)
                 {
-                    drawPos += new Vector3(-0.8f, 0f, -0.88f);
-                    flip = true;
+                    drawPos += new Vector3(-0.8f, -0.0390625f * 0.5f, -0.1f);
                 }
             }
         }

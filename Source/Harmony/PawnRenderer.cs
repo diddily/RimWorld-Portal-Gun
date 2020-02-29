@@ -34,4 +34,30 @@ namespace Portal_Gun.Harmony
             }
         }
     }
+
+    [HarmonyPatch(typeof(PawnRenderer), "DrawEquipmentAiming")]
+    class PawnRenderer_DrawEquipmentAiming
+    {
+        static bool Prefix(Pawn ___pawn, Thing eq, Vector3 drawLoc, ref float aimAngle)
+        {
+            if (eq is Item_PortalGun && ___pawn.carryTracker != null && ___pawn.carryTracker.CarriedThing != null)
+            {
+                Vector3 dummy = Vector3.zero;
+                bool dummy1 = false;
+                bool dummy2 = false;
+                if (___pawn.CurJob == null || !___pawn.jobs.curDriver.ModifyCarriedThingDrawPos(ref dummy, ref dummy1, ref dummy2))
+                {
+                    if (aimAngle == 143f)
+                    {
+                        aimAngle = 90f;
+                    }
+                    else if (aimAngle == 217f)
+                    {
+                        aimAngle = 270f;
+                    }
+                }
+            }
+            return true;
+        }
+    }
 }

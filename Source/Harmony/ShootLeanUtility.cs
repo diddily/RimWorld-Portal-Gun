@@ -26,7 +26,7 @@ namespace Portal_Gun.Harmony
             }
             if (tmpList.Count > 0)
             {
-                Log.Message("LeanShootingSourcesFromTo (" + shooterLoc + " -> " + targetPos + ") added: " + tmpList.Join(c => c.ToString(), ","));
+                //Log.Message("LeanShootingSourcesFromTo (" + shooterLoc + " -> " + targetPos + ") added: " + tmpList.Join(c => c.ToString(), ","));
             }
             listToFill.Concat(tmpList);
         }
@@ -46,7 +46,7 @@ namespace Portal_Gun.Harmony
 
             if (tmpList.Count > 0)
             {
-                Log.Message("CalcShootableCellsOf (" + t + ") added: " + tmpList.Join(c => c.ToString(), ","));
+                //Log.Message("CalcShootableCellsOf (" + t + ") added: " + tmpList.Join(c => c.ToString(), ","));
             }
             outCells.Concat(tmpList);
         }

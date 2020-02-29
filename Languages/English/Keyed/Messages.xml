@@ -10,6 +10,7 @@
   <PG_RanOutOfPower>Ran out of power.</PG_RanOutOfPower>
   <PG_SurfaceDestroyed>Surface destroyed.</PG_SurfaceDestroyed>
   <PG_SurfaceChanged>Surface changed.</PG_SurfaceChanged>
+  <PG_SolarFlareInterference>Solar flare interference.</PG_SolarFlareInterference>
   <PG_SurfaceIncompatible_NotSolid>Surface incompatible (not solid).</PG_SurfaceIncompatible_NotSolid>
   <PG_SurfaceIncompatible_TooRough>Surface incompatible (too rough).</PG_SurfaceIncompatible_TooRough>
   <PG_SurfaceIncompatible_TooSoft>Surface incompatible (too soft).</PG_SurfaceIncompatible_TooSoft>
@@ -18,6 +19,11 @@
   <PG_SurfaceIncompatible_AlreadyOccupied>Surface incompatible (already occupied).</PG_SurfaceIncompatible_AlreadyOccupied>
   <PG_SurfaceIncompatible_PortalAlreadyPresent>Surface incompatible (portal already present).</PG_SurfaceIncompatible_PortalAlreadyPresent>
   <PG_SurfaceIncompatible_LocationBlocked>Surface incompatible (location blocked).</PG_SurfaceIncompatible_LocationBlocked>
+  <PG_SurfaceIncompatible_Changed>Surface changed.</PG_SurfaceIncompatible_Changed>
   <PG_TooFar>Distance between portals is too far.</PG_TooFar>
 
+  <PA_PortalPowerDrawMultiplier_Title>Portal Power Draw Multiplier</PA_PortalPowerDrawMultiplier_Title>
+  <PA_PortalPowerDrawMultiplier_Description>Scales the power draw maintaining a portal for a portal gun. Setting this to 0 will disable the power draw.</PA_PortalPowerDrawMultiplier_Description>
+  <PA_SolarFlareInterferenceEnabled_Title>Solar Flare Interference Enabled</PA_SolarFlareInterferenceEnabled_Title>
+  <PA_SolarFlareInterferenceEnabled_Description>Controls if solar flares will knock out portal guns without protection.</PA_SolarFlareInterferenceEnabled_Description>
 </LanguageData>

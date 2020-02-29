@@ -1,0 +1,25 @@
+Non-violents throw errors when shooting due to access of disabled stats (easy to fix)
+Attempted to calculate value for disabled stat ShootingAccuracyPawn; this is meant as a consistency check, either set the stat to neverDisabled or ensure this pawn cannot accidentally use this stat (thing=Wuwui)
+Verse.Log:Error(String, Boolean)
+Verse.Log:ErrorOnce(String, Int32, Boolean)
+RimWorld.StatWorker:GetValueUnfinalized(StatRequest, Boolean)
+RimWorld.StatWorker:GetValue(StatRequest, Boolean)
+RimWorld.StatWorker:GetValue(Thing, Boolean)
+RimWorld.StatExtension:GetStatValue(Thing, StatDef, Boolean)
+Verse.ShotReport:HitFactorFromShooter(Thing, Single)
+Verse.ShotReport:HitReportFor(Thing, Verb, LocalTargetInfo)
+Verse.TooltipUtility:ShotCalculationTipString(Thing)
+Verse.TooltipGiverList:DispenseAllThingTooltips()
+RimWorld.MapInterface:MapInterfaceOnGUI_BeforeMainTabs()
+RimWorld.UIRoot_Play:UIRootOnGUI()
+
+
+Not happy with the behavior of move to cast verb, gotta play with it some
+I meant for you to be able to target things out of range and move to it, but that broke... somewhere. Maybe this is ok?
+
+Code clean up and github
+Violence Core
+Adventure Core
+Destroy portals when invalid
+Hot keys
+Fire through portals (Fire.TrySpread)

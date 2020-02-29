@@ -36,15 +36,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\HugsLibsAssemblies\0Harmony.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\ReferencedAssemblies_1.0\0Harmony.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\RimWorldAssemblies\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\ReferencedAssemblies_1.0\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="HugsLib">
-      <HintPath>..\HugsLibsAssemblies\HugsLib.dll</HintPath>
+      <HintPath>..\ReferencedAssemblies_1.0\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,11 +66,10 @@
       <SubType>Designer</SubType>
       <Link>Items.xml</Link>
     </None>
-    <None Include="..\Defs\ThingDefs\Weapons\PortalGun.xml" />
-    <None Include="..\Languages\**" />
+    <None Include="..\Languages\English\Keyed\Messages.xml" />
     <None Include="..\Patches\**" />
     <Reference Include="UnityEngine">
-      <HintPath>..\RimWorldAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>..\ReferencedAssemblies_1.0\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -89,8 +88,10 @@
     <Compile Include="Comps\Comp_PortalGunModule.cs" />
     <Compile Include="Comps\Comp_PortalGunPortal.cs" />
     <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="Harmony\FloatMenuMakerMap.cs" />
     <Compile Include="Harmony\GenAdj.cs" />
     <Compile Include="Harmony\JobDriver.cs" />
+    <Compile Include="Harmony\MapDrawer.cs" />
     <Compile Include="Harmony\PathFinder.cs" />
     <Compile Include="Harmony\PawnRenderer.cs" />
     <Compile Include="Harmony\Pawn_DrawTracker.cs" />
