@@ -17,8 +17,7 @@
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Assemblies\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>VERSION_1_0</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -26,8 +25,7 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Portal_Gun - Release\Assemblies\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>VERSION_1_0</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -36,15 +34,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\ReferencedAssemblies_1.0\0Harmony.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\v1.0\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\ReferencedAssemblies_1.0\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\v1.0\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="HugsLib">
-      <HintPath>..\ReferencedAssemblies_1.0\HugsLib.dll</HintPath>
+      <HintPath>..\..\RimworldHugsLib\Mods\HugsLib\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,25 +51,24 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <None Include="..\About\**" />
-    <None Include="..\Defs\JobDefs\Jobs.xml">
-      <Link>Jobs.xml</Link>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="..\Defs\ThingDefs\Buildings.xml">
-      <SubType>Designer</SubType>
-      <Link>Buildings.xml</Link>
-    </None>
-    <None Include="..\Defs\ThingDefs\Items.xml">
-      <SubType>Designer</SubType>
-      <Link>Items.xml</Link>
-    </None>
-    <None Include="..\Languages\English\Keyed\Messages.xml" />
-    <None Include="..\Patches\**" />
     <Reference Include="UnityEngine">
-      <HintPath>..\ReferencedAssemblies_1.0\UnityEngine.dll</HintPath>
+      <HintPath>..\..\v1.0\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <None Include="..\About\**" />
+    <None Include="..\Defs\DamageDefs\Damages.xml" />
+    <None Include="..\Defs\JobDefs\Jobs.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="..\Defs\RecipeDefs\Recipes.xml" />
+    <None Include="..\Defs\ResearchProjectDefs\ResearchProjects.xml" />
+    <None Include="..\Defs\ResearchProjectDefs\ResearchTabs.xml" />
+    <None Include="..\Defs\SoundDefs\Sounds.xml" />
+    <None Include="..\Defs\ThingDefs\Buildings.xml" />
+    <None Include="..\Defs\ThingDefs\Items.xml" />
+    <None Include="..\Defs\ThingDefs\Modules.xml" />
+    <None Include="..\Languages\**" />
+    <None Include="..\Patches\**" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buildings\Building_PortalGunCharger.cs" />
@@ -87,20 +84,20 @@
     <Compile Include="Comps\Comp_PortalGun.cs" />
     <Compile Include="Comps\Comp_PortalGunModule.cs" />
     <Compile Include="Comps\Comp_PortalGunPortal.cs" />
-    <Compile Include="HarmonyPatches.cs" />
-    <Compile Include="Harmony\FloatMenuMakerMap.cs" />
-    <Compile Include="Harmony\GenAdj.cs" />
-    <Compile Include="Harmony\JobDriver.cs" />
-    <Compile Include="Harmony\MapDrawer.cs" />
-    <Compile Include="Harmony\PathFinder.cs" />
-    <Compile Include="Harmony\PawnRenderer.cs" />
-    <Compile Include="Harmony\Pawn_DrawTracker.cs" />
-    <Compile Include="Harmony\Pawn_EquipmentTracker.cs" />
-    <Compile Include="Harmony\Pawn_PathFollower.cs" />
-    <Compile Include="Harmony\ShootLeanUtility.cs" />
-    <Compile Include="Harmony\Toils_Combat.cs" />
-    <Compile Include="Harmony\Projectile.cs" />
-    <Compile Include="Harmony\RegionMaker.cs" />
+    <Compile Include="HarmonyPatches\FloatMenuMakerMap.cs" />
+    <Compile Include="HarmonyPatches\GenAdj.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\JobDriver.cs" />
+    <Compile Include="HarmonyPatches\MapDrawer.cs" />
+    <Compile Include="HarmonyPatches\PathFinder.cs" />
+    <Compile Include="HarmonyPatches\PawnRenderer.cs" />
+    <Compile Include="HarmonyPatches\Pawn_DrawTracker.cs" />
+    <Compile Include="HarmonyPatches\Pawn_EquipmentTracker.cs" />
+    <Compile Include="HarmonyPatches\Pawn_PathFollower.cs" />
+    <Compile Include="HarmonyPatches\ShootLeanUtility.cs" />
+    <Compile Include="HarmonyPatches\Toils_Combat.cs" />
+    <Compile Include="HarmonyPatches\Projectile.cs" />
+    <Compile Include="HarmonyPatches\RegionMaker.cs" />
     <Compile Include="Items\Item_PortalGun.cs" />
     <Compile Include="Jobs\JobDriver_CreatePortal.cs" />
     <Compile Include="Jobs\JobDriver_InsertModule.cs" />

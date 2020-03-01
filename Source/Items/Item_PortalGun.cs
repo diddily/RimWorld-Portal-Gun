@@ -1,4 +1,8 @@
-﻿using Harmony;
+﻿#if VERSION_1_0
+using Harmony;
+#else
+using HarmonyLib;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;

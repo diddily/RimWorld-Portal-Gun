@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Portal_Gun</RootNamespace>
+    <AssemblyName>Portal_Gun</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\v1.1\Assemblies\</OutputPath>
+    <DefineConstants>VERSION_1_1</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Portal_Gun - Release\v1.1\Assemblies\</OutputPath>
+    <DefineConstants>VERSION_1_1</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\v1.1\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\v1.1\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HugsLib">
+      <HintPath>..\..\RimworldHugsLib\Mods\HugsLib\v1.1\Assemblies\HugsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\v1.1\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\v1.1\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\v1.1\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <None Include="..\About\**" />
+    <None Include="..\Defs\**" />
+    <None Include="..\Languages\**" />
+    <None Include="..\Patches\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buildings\Building_PortalGunCharger.cs" />
+    <Compile Include="Buildings\Building_PortalGunPortalEntry.cs" />
+    <Compile Include="Buildings\Building_PortalGunPortal.cs" />
+    <Compile Include="Comps\CompPowerPlantProperties_PortalGunCharger.cs" />
+    <Compile Include="Comps\CompPowerPlant_PortalGunCharger.cs" />
+    <Compile Include="Comps\CompProperties_PortalGun.cs" />
+    <Compile Include="Comps\CompProperties_PortalGunModule.cs" />
+    <Compile Include="Comps\CompProperties_PortalGunPortal.cs" />
+    <Compile Include="Comps\CompTargetable_PortalGun.cs" />
+    <Compile Include="Comps\CompTargetEffect_AddModule.cs" />
+    <Compile Include="Comps\Comp_PortalGun.cs" />
+    <Compile Include="Comps\Comp_PortalGunModule.cs" />
+    <Compile Include="Comps\Comp_PortalGunPortal.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\FloatMenuMakerMap.cs" />
+    <Compile Include="HarmonyPatches\GenAdj.cs" />
+    <Compile Include="HarmonyPatches\JobDriver.cs" />
+    <Compile Include="HarmonyPatches\MapDrawer.cs" />
+    <Compile Include="HarmonyPatches\PathFinder.cs" />
+    <Compile Include="HarmonyPatches\PawnRenderer.cs" />
+    <Compile Include="HarmonyPatches\Pawn_DrawTracker.cs" />
+    <Compile Include="HarmonyPatches\Pawn_EquipmentTracker.cs" />
+    <Compile Include="HarmonyPatches\Pawn_PathFollower.cs" />
+    <Compile Include="HarmonyPatches\ShootLeanUtility.cs" />
+    <Compile Include="HarmonyPatches\Toils_Combat.cs" />
+    <Compile Include="HarmonyPatches\Projectile.cs" />
+    <Compile Include="HarmonyPatches\RegionMaker.cs" />
+    <Compile Include="Items\Item_PortalGun.cs" />
+    <Compile Include="Jobs\JobDriver_CreatePortal.cs" />
+    <Compile Include="Jobs\JobDriver_InsertModule.cs" />
+    <Compile Include="Jobs\JobDriver_RemoveModule.cs" />
+    <Compile Include="Jobs\JobDriver_TraversePortal.cs" />
+    <Compile Include="PG_DefOf.cs" />
+    <Compile Include="PortalManager.cs" />
+    <Compile Include="Portal_Gun.cs" />
+    <Compile Include="Projectiles\Projectile_PortalGun.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stances\Stance_UsePortal.cs" />
+    <Compile Include="Toils\Toils_PortalGun.cs" />
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Languages\English\Messages.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(SolutionDir)..\..\RimWorldWin64.exe</StartProgram>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug -quicktest|AnyCPU' ">
+    <StartArguments>-quicktest</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release -quicktest|AnyCPU' ">
+    <StartArguments>-quicktest</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>echo F|xcopy "$(ProjectDir)..\About\About.xml" "$(TargetDir)..\..\About\About.xml" /C /Y /K /Q /D
+echo F|xcopy "$(ProjectDir)..\LoadFolders.xml" "$(TargetDir)..\..\LoadFolders.xml" /C /Y /K /Q /D
+IF /I "$(ConfigurationName)" == "Release"; echo F|xcopy "$(ProjectDir)..\About\Preview.png" "$(TargetDir)..\..\About\Preview.png" /S /C /Y /K /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Assemblies"; xcopy "$(ProjectDir)..\Assemblies" "$(TargetDir)..\..\Assemblies" /S /C /Y /K /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\v1.1"; xcopy "$(TargetDir)..\..\v1.1" "$(ProjectDir)..\v1.1" /S /C /Y /K /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Defs"; xcopy "$(ProjectDir)..\Defs" "$(TargetDir)..\..\Defs" /S /C /Y /K  /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Patches"; xcopy "$(ProjectDir)..\Patches" "$(TargetDir)..\..\Patches" /S /C /Y /K  /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Languages"; xcopy "$(ProjectDir)..\Languages" "$(TargetDir)..\..\Languages" /S /C /Y /K  /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Sounds";  xcopy "$(ProjectDir)..\Sounds" "$(TargetDir)..\..\Sounds" /S /C /Y /K  /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\Textures";  xcopy "$(ProjectDir)..\Textures" "$(TargetDir)..\..\Textures" /S /C /Y /K /I /Q /D
+IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\LICENSE"; copy "$(ProjectDir)..\LICENSE" "$(TargetDir)..\..\LICENSE" /Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

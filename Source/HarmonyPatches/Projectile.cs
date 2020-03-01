@@ -1,4 +1,8 @@
-﻿using Harmony;
+﻿#if VERSION_1_0
+using Harmony;
+#else
+using HarmonyLib;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +14,7 @@ using Verse.AI;
 using Portal_Gun.Items;
 using Portal_Gun.Projectiles;
 
-namespace Portal_Gun.Harmony
+namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(Projectile), "Launch")]
 	[HarmonyPatch(new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(Thing), typeof(ThingDef) })]

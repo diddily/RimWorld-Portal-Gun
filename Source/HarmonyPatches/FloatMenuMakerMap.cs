@@ -1,4 +1,8 @@
-﻿using Harmony;
+﻿#if VERSION_1_0
+using Harmony;
+#else
+using HarmonyLib;
+#endif
 using Portal_Gun.Items;
 using RimWorld;
 using System;
@@ -10,7 +14,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace Portal_Gun.Harmony
+namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(FloatMenuMakerMap), "AddDraftedOrders")]
 	[HarmonyPatch(new Type[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>) })]
