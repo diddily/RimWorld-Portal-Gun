@@ -91,13 +91,13 @@ namespace Portal_Gun.Buildings
 
 			if (isWall != wasWall)
 			{
-				Log.Message("isWall != wasWall");
+				Portal_Gun.Message("isWall != wasWall");
 				return false;
 			}
 
 			if (GenGrid.Impassable(IsWall ? Position + Rotation.FacingCell : Position, Map))
 			{
-				Log.Message("GenGrid.Impassable(linkedEntry.Position, Map)");
+				Portal_Gun.Message("GenGrid.Impassable(linkedEntry.Position, Map)");
 				return false;
 			}
 			if (isWall)
@@ -106,7 +106,7 @@ namespace Portal_Gun.Buildings
 				bool notSolid = things.Count(t => t.def.fillPercent > 0 && t.def.fillPercent < 1) > 0;
 				if (notSolid)
 				{
-					Log.Message("notSolid");
+					Portal_Gun.Message("notSolid");
 					return false;
 				}
 			}
@@ -115,7 +115,7 @@ namespace Portal_Gun.Buildings
 				TerrainDef terrain = Position.GetTerrain(Map);
 				if (terrain != Terrain)
 				{
-					Log.Message("terrain != Terrain");
+					Portal_Gun.Message("terrain != Terrain");
 					return false;
 				}
 			}
@@ -243,7 +243,7 @@ namespace Portal_Gun.Buildings
 			base.ExposeData();
 			Scribe_Values.Look(ref PortalColor, "PortalColor");
 			Scribe_Values.Look(ref __isWall, "__isWall");
-			Scribe_Values.Look(ref __terrain, "__terrain");
+			Scribe_Defs.Look(ref __terrain, "__terrain");
 			Scribe_Values.Look(ref __floorRotation, "__floorRotation");
 			Scribe_Values.Look(ref __ownsRegion, "__ownsRegion");
 			Scribe_Values.Look(ref worldTile, "worldTile", -1);

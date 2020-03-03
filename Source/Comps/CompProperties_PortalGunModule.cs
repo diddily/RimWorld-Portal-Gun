@@ -6,7 +6,7 @@ namespace Portal_Gun.Comps
 {
 	public class CompProperties_PortalGunModule : CompProperties
 	{
-		public float rangeMult;
+		public float rangeAdd;
 		public float inaccuracyFactor;
 		public float powerOutput;
 		public float powerEfficiency;

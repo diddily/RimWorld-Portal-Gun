@@ -51,7 +51,7 @@ namespace Portal_Gun.HarmonyPatches
 			}
 			if (!foundCall)
 			{
-				Log.Message("Failed to patch FloatMenuMakerMap.AddDraftedOrders, couldn't find: callvirt instance class Verse.ThingWithComps Verse.Pawn_EquipmentTracker::get_Primary()");
+				Log.Warning("Failed to patch FloatMenuMakerMap.AddDraftedOrders, couldn't find: callvirt instance class Verse.ThingWithComps Verse.Pawn_EquipmentTracker::get_Primary()");
 			}
 		}
 	}

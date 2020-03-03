@@ -82,7 +82,7 @@ namespace Portal_Gun.HarmonyPatches
 			for (int i = 0; i < instructionsList.Count; ++i)
 			{
 				if (instructionsList[i].opcode == OpCodes.Stloc_S &&
-					instructionsList[i + 1].opcode == OpCodes.Ldloca_S && instructionsList[i].operand == instructionsList[i + 1].operand &&
+					(instructionsList[i + 1].opcode == OpCodes.Ldloca_S || instructionsList[i + 1].opcode == OpCodes.Ldloc_S) && instructionsList[i].operand == instructionsList[i + 1].operand &&
 					instructionsList[i + 2].opcode == OpCodes.Ldfld && instructionsList[i + 2].operand == intVec3XField &&
 					instructionsList[i + 5].opcode == OpCodes.Ldfld && instructionsList[i + 5].operand == intVec3ZField)
 				{
@@ -212,7 +212,7 @@ namespace Portal_Gun.HarmonyPatches
 			}
 			if (missingParts.Count > 0)
 			{
-				Log.Message("Failed to patch PathFinder.FindPath, couldn't find: " + missingParts.Join());
+				Log.Warning("Failed to patch PathFinder.FindPath, couldn't find: " + missingParts.Join());
 				for (int i = 0; i < instructionsList.Count; ++i)
 				{
 					yield return instructionsList[i];

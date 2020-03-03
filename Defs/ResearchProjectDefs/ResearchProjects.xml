@@ -2,10 +2,10 @@
 <Defs>
 	<ResearchProjectDef>
 	  <defName>PG_BasicsResearch</defName>
-	  <label>basics</label>
+	  <label>Portal Gun basics</label>
 	  <tab>PG_ResearchTab</tab>
 	  <techLevel>Spacer</techLevel>
-	  <description>.</description>
+	  <description>Grants the ability to craft Portal Guns which allow for instantaneous travel between two points but come with a hefty power requirement to use.</description>
 	  <baseCost>1000</baseCost>
 	  <prerequisites>
 	    <li>MicroelectronicsBasics</li>
@@ -19,7 +19,7 @@
 		<label>basic modules</label>
 		<tab>PG_ResearchTab</tab>
 		<techLevel>Spacer</techLevel>
-		<description>.</description>
+		<description>Enables the research into basic Portal Gun modules which can improve the device in minor ways. Also allows 1 module to be added to any Portal Gun.</description>
 		<baseCost>500</baseCost>
 		<prerequisites>
 		  <li>PG_BasicsResearch</li>
@@ -33,7 +33,7 @@
     <label>intermediate modules</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Enables the research into intermediate Portal Gun modules which can improve the device in significant ways. Also allows an additional module to be added to any Portal Gun, up to two modules per device.</description>
     <baseCost>1500</baseCost>
     <prerequisites>
       <li>PG_BasicModulesResearch</li>
@@ -47,7 +47,7 @@
     <label>advanced modules</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Enables the research into advanced Portal Gun modules which can improve the device in major ways. Also allows an additional module to be added to any Portal Gun, up to three modules per device.</description>
     <baseCost>2500</baseCost>
     <prerequisites>
       <li>PG_IntermediateModulesResearch</li>
@@ -61,7 +61,7 @@
     <label>battery module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Craft the battery module, which increases the power capacity of any Portal Gun its added to.</description>
     <baseCost>750</baseCost>
     <prerequisites>
       <li>PG_BasicModulesResearch</li>
@@ -75,7 +75,7 @@
     <label>power efficiency module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Craft the power efficiency module, which reduces the power draw of any Portal Gun its added to.</description>
     <baseCost>750</baseCost>
     <prerequisites>
       <li>PG_BasicModulesResearch</li>
@@ -86,16 +86,16 @@
 
   <ResearchProjectDef>
     <defName>PG_ImprovedSurfaceModuleResearch</defName>
-    <label>advanced surface module</label>
+    <label>improved surface module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
-    <baseCost>750</baseCost>
+    <description>Craft the improved surface module, which allows portals to be placed on roughly hewn surfaces at the cost of an additional power draw.</description>
+    <baseCost>2000</baseCost>
     <prerequisites>
-      <li>PG_BasicModulesResearch</li>
+      <li>PG_IntermediateModulesResearch</li>
     </prerequisites>
-    <researchViewX>2</researchViewX>
-    <researchViewY>3</researchViewY>
+    <researchViewX>4</researchViewX>
+    <researchViewY>2</researchViewY>
   </ResearchProjectDef>
 
 
@@ -104,7 +104,7 @@
     <label>GLaDOS module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Craft the GLaDOS module, which tunes the Portal Gun to run more lean, shoot further and with much greater accuracy and prevents solar flares from affecting it.</description>
     <baseCost>2000</baseCost>
     <prerequisites>
       <li>PG_IntermediateModulesResearch</li>
@@ -112,7 +112,8 @@
     <researchViewX>4</researchViewX>
     <researchViewY>1</researchViewY>
   </ResearchProjectDef>
-  
+
+<!--
   <ResearchProjectDef>
     <defName>PG_ViolenceCoreModuleResearch</defName>
     <label>violence core module</label>
@@ -126,7 +127,7 @@
     <researchViewX>4</researchViewX>
     <researchViewY>2</researchViewY>
   </ResearchProjectDef>
-  
+
   <ResearchProjectDef>
     <defName>PG_AdventureCoreModuleResearch</defName>
     <label>adventure core module</label>
@@ -140,19 +141,20 @@
     <researchViewX>6</researchViewX>
     <researchViewY>1</researchViewY>
   </ResearchProjectDef>
+-->
 
   <ResearchProjectDef>
     <defName>PG_VanometricPowerModuleResearch</defName>
     <label>vanometric power module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Craft the vanometric power module, which allows a Portal Gun to generate its own power to maintain its portals.</description>
     <baseCost>3500</baseCost>
     <prerequisites>
       <li>PG_AdvancedModulesResearch</li>
     </prerequisites>
     <researchViewX>6</researchViewX>
-    <researchViewY>2</researchViewY>
+    <researchViewY>1</researchViewY>
   </ResearchProjectDef>
   
   <ResearchProjectDef>
@@ -160,12 +162,12 @@
     <label>advanced surface module</label>
     <tab>PG_ResearchTab</tab>
     <techLevel>Spacer</techLevel>
-    <description>.</description>
+    <description>Craft the advanced surface module, which allows portals to be placed on nearly any surface at the cost of an additional power draw when placed on more difficult to maintain surfaces.</description>
     <baseCost>3500</baseCost>
     <prerequisites>
       <li>PG_AdvancedModulesResearch</li>
     </prerequisites>
     <researchViewX>6</researchViewX>
-    <researchViewY>3</researchViewY>
+    <researchViewY>2</researchViewY>
   </ResearchProjectDef>
 </Defs>

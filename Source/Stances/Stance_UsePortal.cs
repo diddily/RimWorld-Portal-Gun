@@ -60,13 +60,13 @@ namespace Portal_Gun.Stances
 			{
 				IntVec3 nextCell = pawn.pather.curPath.Peek(1);
 				Building building = nextCell.GetEdifice(pawn.Map);
-				Log.Message(pawn + " nextCell building = " + building);
+				Portal_Gun.Message(pawn + " nextCell building = " + building);
 				if (building != null && building.BlocksPawn(pawn))
 				{
 					Building_Door building_Door = building as Building_Door;
 					if (building_Door == null || !building_Door.FreePassage)
 					{
-						Log.Message((pawn.CurJob != null && pawn.CurJob.canBash) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash));
+						Portal_Gun.Message((pawn.CurJob != null && pawn.CurJob.canBash) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash));
 						if ((pawn.CurJob != null && pawn.CurJob.canBash) || (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash) || pawn.HostileTo(building))
 						{
 							Job job = new Job(JobDefOf.AttackMelee, building);
@@ -74,14 +74,14 @@ namespace Portal_Gun.Stances
 							pawn.jobs.StartJob(job, JobCondition.Incompletable, null, false, true, null, null, false);
 							return false;
 						}
-						Log.Message("nope");
+						Portal_Gun.Message("nope");
 						pawn.pather.StopDead();
 						pawn.jobs.curDriver.Notify_PatherFailed();
 						return false;
 					}
 				}
 				Building_Door building_Door2 = pawn.Map.thingGrid.ThingAt<Building_Door>(nextCell);
-				Log.Message(pawn + " nextCell building2 = " + building);
+				Portal_Gun.Message(pawn + " nextCell building2 = " + building);
 				if (building_Door2 != null && building_Door2.SlowsPawns && !building_Door2.Open && building_Door2.PawnCanOpen(pawn))
 				{
 					Stance_Cooldown stance_Cooldown = new Stance_Cooldown(building_Door2.TicksToOpenNow, building_Door2, null);

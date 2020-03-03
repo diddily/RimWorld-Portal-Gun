@@ -85,7 +85,7 @@ namespace Portal_Gun.HarmonyPatches
 		{
 			if (__instance.equipment != null && __instance.equipment.Primary != null && __instance.equipment.Primary is Item_PortalGun)
 			{
-				return ((Item_PortalGun)__instance.equipment.Primary).HasViolenceCoreModule;
+				return ((Item_PortalGun)__instance.equipment.Primary).AllowsViolence;
 			}
 
 			return true;

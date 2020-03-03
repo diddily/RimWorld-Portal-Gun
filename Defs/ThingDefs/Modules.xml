@@ -79,8 +79,8 @@
   <!-- Basic -->
   <ThingDef ParentName="PG_BasicModule">
     <defName>PG_BatteryModule</defName>
-    <label>Portal gun battery module</label>
-    <description>.</description>
+    <label>Portal Gun Battery Module</label>
+    <description>The Aperture Science Battery Module increases the power capacity of the Portal Gun by 50% per module.</description>
     <graphicData>
       <texPath>Things/Modules/Battery</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -94,8 +94,8 @@
   
   <ThingDef ParentName="PG_BasicModule">
     <defName>PG_PowerEfficencyModule</defName>
-    <label>Portal gun power efficiency module</label>
-    <description>.</description>
+    <label>Portal Gun Power Efficiency Module</label>
+    <description>The Aperture Science Power Efficiency Module reroutes the flow of power through the Portal Gun, reducing the draw by 20% per module.</description>
     <graphicData>
       <texPath>Things/Modules/PowerEfficency</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -109,8 +109,8 @@
 
   <ThingDef ParentName="PG_BasicModule">
     <defName>PG_ImprovedSurfaceModule</defName>
-    <label>Portal gun improved surface module</label>
-    <description>.</description>
+    <label>Portal Gun Improved Surface Module</label>
+    <description>The Aperture Science Improved Surface Module allows the Portal Gun to apply portals to surfaces that are roughly hewn at an increased power draw to maintain the portal.</description>
     <graphicData>
       <texPath>Things/Modules/ImprovedSurface</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -125,16 +125,14 @@
   <!-- Intermediate -->
   <ThingDef ParentName="PG_IntermediateModule">
     <defName>PG_GLaDOSModule</defName>
-    <label>GLaDOS module</label>
-    <description>Potato GLaDOS.</description>
+    <label>Portal Gun GLaDOS Module</label>
+    <description>GLaDOS (Genetic Lifeform and Disk Operating System) attached to a potato for power and stuck onto the Portal Gun haphazardly. GLaDOS is able to slightly optimize the Portal Gun to run better and protects it from suffering the effects of solar flares. Additionally, by berating the user of the Portal Gun, the GLaDOS module greatly increases the range and accuracy of the device.</description>
     <graphicData>
       <texPath>Things/Modules/POTaDOS</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <comps>
       <li Class="Portal_Gun.Comps.CompProperties_PortalGunModule">
-        <rangeMult>2.0</rangeMult>
-        <inaccuracyFactor>0.95</inaccuracyFactor>
         <powerEfficiency>0.1</powerEfficiency>
         <preventSolarFlare>true</preventSolarFlare>
         <unique>true</unique>
@@ -142,6 +140,7 @@
     </comps>
   </ThingDef>
 
+<!--
   <ThingDef ParentName="PG_IntermediateModule">
     <defName>PG_ViolenceCoreModule</defName>
     <label>Violence core module</label>
@@ -157,9 +156,11 @@
       </li>
     </comps>
   </ThingDef>
+-->
 
   <!-- Advanced -->
 
+<!--
   <ThingDef ParentName="PG_AdvancedModule">
     <defName>PG_AdventureCoreModule</defName>
     <label>adventure module</label>
@@ -175,11 +176,12 @@
       </li>
     </comps>
   </ThingDef>
-  
+-->
+
   <ThingDef ParentName="PG_AdvancedModule">
     <defName>PG_VanometricPowerModule</defName>
-    <label>vanometric power module</label>
-    <description>.</description>
+    <label>Portal Gun Vanometric Power Module</label>
+    <description>The Aperture Science Vanometric Power Module adapts a vanometric power cell to power the Portal Gun, providing the device enough power in order to keep portals active indefinitely.</description>
     <graphicData>
       <texPath>Things/Modules/VanometricPower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -194,8 +196,8 @@
 
   <ThingDef ParentName="PG_AdvancedModule">
     <defName>PG_AdvancedSurfaceModule</defName>
-    <label>Portal gun advanced surface module</label>
-    <description>.</description>
+    <label>Portal Gun Advanced Surface Module</label>
+    <description>The Aperture Science Advanced Surface Module allows the Portal Gun to apply portals to nearly any surface, including loose surfaces such as soil. However, the power draw in order to maintain portals on such surfaces is significantly larger.</description>
     <graphicData>
       <texPath>Things/Modules/AdvancedSurface</texPath>
       <graphicClass>Graphic_Single</graphicClass>

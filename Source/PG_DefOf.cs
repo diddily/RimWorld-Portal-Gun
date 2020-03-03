@@ -18,8 +18,8 @@ namespace Portal_Gun
 		public static ThingDef PG_PortalEntry;
 
 		public static ThingDef PG_GLaDOSModule;
-		public static ThingDef PG_ViolenceCoreModule;
-		public static ThingDef PG_AdventureCoreModule;
+		//public static ThingDef PG_ViolenceCoreModule;
+		//public static ThingDef PG_AdventureCoreModule;
 
 		public static ThingDef PG_PortalGun_ShellPrimary;
 		public static ThingDef PG_PortalGun_ShellSecondary;

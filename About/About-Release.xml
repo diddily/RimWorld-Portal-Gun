@@ -7,7 +7,9 @@
 		<li>1.1</li>
 	</supportedVersions>
 	<packageId>diddily.PortalGun</packageId>
-	<description>It's a portal gun!</description>
+	<description>Adds a Portal Gun which allows for instantaneous travel between two points though at the cost of a significant power drain. Includes research tree and craftable modules to enhance the functionality of the Portal Guns.
+
+Has mod settings to reduce/eliminate the challenge assoicated with keeping portals up (at the cost of game balance).</description>
 	<modDependencies>
 		<li>
 			<packageId>UnlimitedHugs.HugsLib</packageId>
@@ -19,5 +21,5 @@
 	<loadAfter>
 		<li>UnlimitedHugs.HugsLib</li>
 	</loadAfter>
-	<url>https://steamcommunity.com/id/diddily/myworkshopfiles/?appid=294100</url>
+	<!--<url>https://steamcommunity.com/id/diddily/myworkshopfiles/?appid=294100</url>-->
 </ModMetaData>

@@ -15,9 +15,18 @@ namespace Portal_Gun
 		public static Portal_Gun Instance { get; private set; }
 		public Dictionary<Map, PortalManager> PortalManagers = new Dictionary<Map, PortalManager>();
 
+		internal static bool Verbose = false;
 
 		internal static SettingHandle<float> portalPowerDrawMultiplier;
 		internal static SettingHandle<bool> solarFlareInterferenceEnabled;
+
+		public static void Message(string msg)
+		{
+			if (Verbose)
+			{
+				Log.Message(msg);
+			}
+		}
 
 		public override string ModIdentifier
 		{

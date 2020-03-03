@@ -148,6 +148,60 @@
             <accuracyLong>0.85</accuracyLong>
             <consumeFuelPerShot>0.01</consumeFuelPerShot>
           </li>
+
+          <li>
+            <targetParams>
+              <canTargetLocations>true</canTargetLocations>
+              <canTargetPawns>false</canTargetPawns>
+              <canTargetBuildings>true</canTargetBuildings>
+              <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+              <neverTargetDoors>true</neverTargetDoors>
+            </targetParams>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>PG_PortalGun_BulletPrimary</defaultProjectile>
+            <warmupTime>0.1</warmupTime>
+            <noiseRadius>6</noiseRadius>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <targetable>true</targetable>
+            <soundCast>ShotPrimaryPortal</soundCast>
+            <onlyManualCast>true</onlyManualCast>
+            <ai_IsWeapon>false</ai_IsWeapon>
+            <accuracyTouch>0.9975</accuracyTouch>
+            <accuracyShort>0.995</accuracyShort>
+            <accuracyMedium>0.993</accuracyMedium>
+            <accuracyLong>0.9925</accuracyLong>
+            <consumeFuelPerShot>0.01</consumeFuelPerShot>
+          </li>
+
+          <li>
+            <targetParams>
+              <canTargetLocations>true</canTargetLocations>
+              <canTargetPawns>false</canTargetPawns>
+              <canTargetBuildings>true</canTargetBuildings>
+              <mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+              <neverTargetDoors>true</neverTargetDoors>
+            </targetParams>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>PG_PortalGun_BulletSecondary</defaultProjectile>
+            <warmupTime>0.1</warmupTime>
+            <noiseRadius>6</noiseRadius>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <targetable>true</targetable>
+            <soundCast>ShotSecondaryPortal</soundCast>
+            <onlyManualCast>true</onlyManualCast>
+            <ai_IsWeapon>false</ai_IsWeapon>
+            <accuracyTouch>0.9975</accuracyTouch>
+            <accuracyShort>0.995</accuracyShort>
+            <accuracyMedium>0.993</accuracyMedium>
+            <accuracyLong>0.9925</accuracyLong>
+            <consumeFuelPerShot>0.01</consumeFuelPerShot>
+          </li>
         </verbs>
     </li>
 

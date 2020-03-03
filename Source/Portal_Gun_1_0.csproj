@@ -56,7 +56,9 @@
       <Private>False</Private>
     </Reference>
     <None Include="..\About\**" />
-    <None Include="..\Defs\DamageDefs\Damages.xml" />
+    <None Include="..\Defs\DamageDefs\Damages.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="..\Defs\JobDefs\Jobs.xml">
       <SubType>Designer</SubType>
     </None>
@@ -65,7 +67,9 @@
     <None Include="..\Defs\ResearchProjectDefs\ResearchTabs.xml" />
     <None Include="..\Defs\SoundDefs\Sounds.xml" />
     <None Include="..\Defs\ThingDefs\Buildings.xml" />
-    <None Include="..\Defs\ThingDefs\Items.xml" />
+    <None Include="..\Defs\ThingDefs\Items.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="..\Defs\ThingDefs\Modules.xml" />
     <None Include="..\Languages\**" />
     <None Include="..\Patches\**" />

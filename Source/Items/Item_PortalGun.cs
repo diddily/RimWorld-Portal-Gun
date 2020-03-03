@@ -93,19 +93,19 @@ namespace Portal_Gun.Items
 			}
 		}
 
-		public bool HasAdventureCoreModule
+		public bool AllowsWorldPortals
 		{
 			get
 			{
-				return innerContainer.Any(t => t.def == PG_DefOf.PG_AdventureCoreModule);
+				return innerContainer.Select(t => t.TryGetComp<Comp_PortalGunModule>()).Any(pgm => pgm != null && pgm.Props.allowWorldPortals);
 			}
 		}
 
-		public bool HasViolenceCoreModule
+		public bool AllowsViolence
 		{
 			get
 			{
-				return innerContainer.Any(t => t.def == PG_DefOf.PG_ViolenceCoreModule);
+				return innerContainer.Select(t => t.TryGetComp<Comp_PortalGunModule>()).Any(pgm => pgm != null && pgm.Props.allowViolence);
 			}
 		}
 
@@ -272,65 +272,68 @@ namespace Portal_Gun.Items
 				success = false; 
 			}
 
-			if (isWall)
+			if (success)
 			{
-				entryPos += facing;
+				if (isWall)
+				{
+					entryPos += facing;
 
-				bool tooRough = things.Count(t => (t.def.building != null && t.def.building.isNaturalRock == true) || t.def == ThingDefOf.CollapsedRocks) > 0;
-				bool notSolid = things.Count(t => t.def.fillPercent > 0 && t.def.fillPercent < 1) > 0;
-				if (success && notSolid)
-				{
-					messageText = "PG_SurfaceIncompatible_NotSolid";
-					success = false;
-				}
-				if (success && tooRough)
-				{
-					messageText = "PG_SurfaceIncompatible_TooRough";
-					requiredSurfaceLevel = 1;
-				}
-			}
-			else
-			{
-				TerrainDef terrain = entryPos.GetTerrain(map);
-				if (terrain.BuildableByPlayer)
-				{
-					if (success && terrain.IsCarpet)
+					bool tooRough = things.Count(t => (t.def.building != null && t.def.building.isNaturalRock == true) || t.def == ThingDefOf.CollapsedRocks) > 0;
+					bool notSolid = things.Count(t => t.def.fillPercent > 0 && t.def.fillPercent < 1) > 0;
+					if (success && notSolid)
 					{
-						messageText = "PG_SurfaceIncompatible_TooSoft";
-						requiredSurfaceLevel = 2;
-					}
-				}
-				else
-				{
-					// Water never supports portals, anything else "wet" enough to be bridgeable can support portals at level 2
-					if (terrain.IsWater)
-					{
-						messageText = "PG_SurfaceIncompatible_TooWet";
+						messageText = "PG_SurfaceIncompatible_NotSolid";
 						success = false;
 					}
-					else if (terrain.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable", true)))
-					{
-						messageText = "PG_SurfaceIncompatible_TooWet";
-						requiredSurfaceLevel = 2;
-					}
-					else if (terrain.smoothedTerrain != null || terrain.HasTag("Road"))
+					if (success && tooRough)
 					{
 						messageText = "PG_SurfaceIncompatible_TooRough";
 						requiredSurfaceLevel = 1;
 					}
-					else if (terrain.affordances.Contains(TerrainAffordanceDefOf.Diggable))
-					{
-						messageText = "PG_SurfaceIncompatible_TooLoose";
-						requiredSurfaceLevel = 2;
-					}
 				}
-				rotation = Rot4.North;
+				else
+				{
+					TerrainDef terrain = entryPos.GetTerrain(map);
+					if (terrain.BuildableByPlayer)
+					{
+						if (success && terrain.IsCarpet)
+						{
+							messageText = "PG_SurfaceIncompatible_TooSoft";
+							requiredSurfaceLevel = 2;
+						}
+					}
+					else
+					{
+						// Water never supports portals, anything else "wet" enough to be bridgeable can support portals at level 2
+						if (terrain.IsWater)
+						{
+							messageText = "PG_SurfaceIncompatible_TooWet";
+							success = false;
+						}
+						else if (terrain.affordances.Contains(DefDatabase<TerrainAffordanceDef>.GetNamed("Bridgeable", true)))
+						{
+							messageText = "PG_SurfaceIncompatible_TooWet";
+							requiredSurfaceLevel = 2;
+						}
+						else if (terrain.smoothedTerrain != null || terrain.HasTag("Road"))
+						{
+							messageText = "PG_SurfaceIncompatible_TooRough";
+							requiredSurfaceLevel = 1;
+						}
+						else if (terrain.affordances.Contains(TerrainAffordanceDefOf.Diggable))
+						{
+							messageText = "PG_SurfaceIncompatible_TooLoose";
+							requiredSurfaceLevel = 2;
+						}
+					}
+					rotation = Rot4.North;
+				}
 			}
 			//map.debugDrawer.FlashCell(entryPos, 0.55f, "firstTest", 100);
 
-			if (GenGrid.Impassable(entryPos, map))
+			if (success && GenGrid.Impassable(entryPos, map))
 			{
-				Log.Message("Facing = " + facing + " Offset = " + offset + "("+ offset.AngleFlat()+")");
+				Portal_Gun.Message("Facing = " + facing + " Offset = " + offset + "("+ offset.AngleFlat()+")");
 				if (!isWall)
 				{
 					messageText = "PG_SurfaceIncompatible_LocationBlocked";
@@ -348,6 +351,7 @@ namespace Portal_Gun.Items
 					}
 					else
 					{
+						messageText = "PG_SurfaceIncompatible_LocationBlocked";
 						success = false;
 					}
 				}
@@ -383,10 +387,11 @@ namespace Portal_Gun.Items
 
 			if (success && SurfaceLevel < requiredSurfaceLevel)
 			{
+				Portal_Gun.Message(SurfaceLevel + " < " + requiredSurfaceLevel);
 				success = false;
 			}
 
-			if (success && (otherPortal != null && otherPortal.worldTile != map.Tile && !HasAdventureCoreModule))
+			if (success && (otherPortal != null && otherPortal.worldTile != map.Tile && !AllowsWorldPortals))
 			{
 				messageText = "PG_TooFar";
 				success = false;
@@ -532,7 +537,6 @@ namespace Portal_Gun.Items
 
 		public void UpdateModules(Comp_PortalGunModule removedModule)
 		{
-		   
 			float totalEnergy = compRefuelable.Fuel;
 			float totalStorage = compRefuelable.Props.fuelCapacity;
 			__powerInternal = 0.0f;
@@ -570,6 +574,9 @@ namespace Portal_Gun.Items
 			{
 				compRefuelable.ConsumeFuel(-deltaFuel);
 			}
+
+			verbs = null;
+			fakeVerbTracker = null;
 		}
 
 		public void AddModule(Thing thing)
@@ -629,6 +636,7 @@ namespace Portal_Gun.Items
 			{
 				InitVerbsFromZero();
 			}
+
 
 			for (int i = 0; i < verbs.Count; i++)
 			{
@@ -752,7 +760,8 @@ namespace Portal_Gun.Items
 			List<VerbProperties> verbProperties = compPortalGun.PG_Props.verbs;
 			if (verbProperties != null)
 			{
-				for (int i = 0; i < verbProperties.Count; i++)
+				int startIndex = (HasGLaDOSModule ? 2 : 0);
+				for (int i = startIndex; i < startIndex + 2; i++)
 				{
 					try
 					{

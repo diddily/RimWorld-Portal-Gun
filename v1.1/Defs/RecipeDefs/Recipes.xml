@@ -2,10 +2,10 @@
   <!-- Basic -->
   <RecipeDef>
     <defName>PG_Craft_BatteryModule</defName>
-    <label>craft battery module</label>
-    <description>Craft a battery module for a portal gun</description>
+    <label>craft Portal Gun Battery Module</label>
+    <description>Craft a battery module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -48,10 +48,10 @@
 
   <RecipeDef>
     <defName>PG_Craft_PowerEfficencyModule</defName>
-    <label>craft power efficency module</label>
-    <description>Craft a power efficency module for a portal gun</description>
+    <label>craft Portal Gun Power Efficiency Module</label>
+    <description>Craft a power efficency module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -94,10 +94,10 @@
 
   <RecipeDef>
     <defName>PG_Craft_ImprovedSurfaceModule</defName>
-    <label>craft improved surface module</label>
-    <description>Craft a improved surface module for a portal gun</description>
+    <label>craft Portal Gun Improved Surface Module</label>
+    <description>Craft a improved surface module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -142,10 +142,10 @@
   
   <RecipeDef>
     <defName>PG_Craft_GLaDOSModule</defName>
-    <label>craft GLaDOS module</label>
-    <description>Craft a GLaDOS module for a portal gun</description>
+    <label>craft Portal Gun GLaDOS Module</label>
+    <description>Craft a GLaDOS module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -201,7 +201,7 @@
     <label>craft violence core module</label>
     <description>Craft a violence core module for a portal gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -251,7 +251,7 @@
     <label>craft adventure module</label>
     <description>Craft a adventure module for a portal gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -304,10 +304,10 @@
 
   <RecipeDef>
     <defName>PG_Craft_VanometricPowerModule</defName>
-    <label>craft vanometric power module</label>
-    <description>Craft a vanometric power module for a portal gun</description>
+    <label>craft Portal Gun Vanometric Power Module</label>
+    <description>Craft a vanometric power module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
@@ -368,10 +368,10 @@
 
   <RecipeDef>
     <defName>PG_Craft_AdvancedSurfaceModule</defName>
-    <label>craft advanced surface module</label>
-    <description>Craft a advanced surface module for a portal gun</description>
+    <label>craft Portal Gun Advanced Surface Module</label>
+    <description>Craft an advanced surface module for a Portal Gun</description>
     <jobString>Crafting</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
     <effectWorking>Repair</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
