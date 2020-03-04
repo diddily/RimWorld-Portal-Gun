@@ -71,6 +71,20 @@ namespace Portal_Gun.HarmonyPatches
 					null);
 			}
 
+			{
+				Type type = AccessTools.TypeByName("VFESecurity.StatPart_AmmoCrate");
+				if (type != null)
+				{
+					Log.Message("Patching VFESecurity.StatPart_AmmoCrate.CanAffect.");
+					MethodInfo originalMethod = AccessTools.Method(type, "CanAffect");
+					HarmonyMethod patchMethod = new HarmonyMethod(typeof(HarmonyPatches).GetMethod(nameof(Patch_CanAffect)));
+					harmony.Patch(
+						originalMethod,
+						patchMethod,
+						null);
+				}
+			}
+
 		}
 
 		public static void Patch_GetVerbsCommands(ref IEnumerable<Command> __result, Verse.CompEquippable __instance)
@@ -111,6 +125,16 @@ namespace Portal_Gun.HarmonyPatches
 					__result = null;
 				}
 			}
+		}
+
+		public static bool Patch_CanAffect(ref bool __result, StatRequest req)
+		{
+			if (req.Thing is Item_PortalGun)
+			{
+				__result = false;
+				return false;
+			}
+			return true;
 		}
 	}
 }

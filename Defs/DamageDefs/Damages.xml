@@ -4,8 +4,23 @@
 	<DamageDef Name="PG_DamagePortalBase" Abstract="True">
 		<harmsHealth>false</harmsHealth>
 		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<canInterruptJobs>false</canInterruptJobs>
 	</DamageDef>
 
+	<DamageDef ParentName="PG_DamagePortalBase">
+		<defName>PG_DamageNonePortal</defName>
+		<label>Portaled</label>
+		<externalViolence>false</externalViolence>
+		<deathMessage>{0} did not survive being portaled.</deathMessage>
+		<defaultDamage>-1</defaultDamage>
+		<hediff>Crush</hediff>
+		<hediffSkin>Bruise</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<explosionCellMote>Mote_BlastDry</explosionCellMote>
+		<combatLogRules>Damage_Stun</combatLogRules>
+	</DamageDef>
+	
 	<DamageDef ParentName="PG_DamagePortalBase">
 		<defName>PG_DamageInvoluntaryPortal</defName>
 		<label>Involuntarily portaled</label>

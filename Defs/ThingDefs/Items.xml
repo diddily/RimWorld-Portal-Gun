@@ -233,6 +233,7 @@
     <useHitPoints>False</useHitPoints>
     <neverMultiSelect>True</neverMultiSelect>
     <projectile>
+			<damageDef>PG_DamageNonePortal</damageDef>
       <damageAmountBase>0</damageAmountBase>
       <speed>35</speed>
       <soundExplode>ShotPortalOpen</soundExplode>
