@@ -8,7 +8,7 @@
 	  <description>Grants the ability to craft Portal Guns which allow for instantaneous travel between two points but come with a hefty power requirement to use.</description>
 	  <baseCost>1000</baseCost>
 	  <prerequisites>
-	    <li>MicroelectronicsBasics</li>
+			<li>Machining</li>
 	  </prerequisites>
 		<researchViewX>0</researchViewX>
 		<researchViewY>0</researchViewY>
@@ -37,6 +37,7 @@
     <baseCost>1500</baseCost>
     <prerequisites>
       <li>PG_BasicModulesResearch</li>
+			<li>MicroelectronicsBasics</li>
     </prerequisites>
     <researchViewX>3</researchViewX>
     <researchViewY>0</researchViewY>
@@ -51,6 +52,7 @@
     <baseCost>2500</baseCost>
     <prerequisites>
       <li>PG_IntermediateModulesResearch</li>
+			<li>Fabrication</li>
     </prerequisites>
     <researchViewX>5</researchViewX>
     <researchViewY>0</researchViewY>

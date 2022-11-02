@@ -55,13 +55,8 @@ namespace Portal_Gun.Buildings
 						linkedEntry = (Building_PortalGunPortalEntry)ThingMaker.MakeThing(PG_DefOf.PG_PortalEntry);
 						GenSpawn.Spawn(linkedEntry, IsWall ? Position + Rotation.FacingCell : Position, Map, 0);
 						linkedEntry.linkedPortal = this;
-						CompProperties_Glower newGlowProps = new CompProperties_Glower();
-						CompProperties_Glower oldGlowProps = linkedEntry.GetComp<CompGlower>().props as CompProperties_Glower;
-						newGlowProps.compClass = oldGlowProps.compClass;
-						newGlowProps.glowColor = new ColorInt(PortalColor);
-						newGlowProps.glowRadius = oldGlowProps.glowRadius;
-						newGlowProps.overlightRadius = oldGlowProps.overlightRadius;
-						linkedEntry.GetComp<CompGlower>().props = newGlowProps;
+						UpdateGlowerProps();
+						
 						__linkedPortal.LinkedPortal = this;
 						if (__ownsRegion == __linkedPortal.__ownsRegion)
 						{
@@ -70,6 +65,17 @@ namespace Portal_Gun.Buildings
 					}
 				}
 			}
+		}
+
+		private void UpdateGlowerProps()
+		{
+			CompProperties_Glower newGlowProps = new CompProperties_Glower();
+			CompProperties_Glower oldGlowProps = linkedEntry.GetComp<CompGlower>().props as CompProperties_Glower;
+			newGlowProps.compClass = oldGlowProps.compClass;
+			newGlowProps.glowColor = new ColorInt(PortalColor);
+			newGlowProps.glowRadius = oldGlowProps.glowRadius;
+			newGlowProps.overlightRadius = oldGlowProps.overlightRadius;
+			linkedEntry.GetComp<CompGlower>().props = newGlowProps;
 		}
 
 		public override void Tick()
@@ -192,6 +198,10 @@ namespace Portal_Gun.Buildings
 			{
 				Terrain = Position.GetTerrain(map);
 			}
+			if (linkedEntry != null)
+			{
+				UpdateGlowerProps();
+			}
 		}
 
 		public override IEnumerable<Gizmo> GetGizmos()
@@ -214,9 +224,9 @@ namespace Portal_Gun.Buildings
 						mapObjectTargetsMustBeAutoAttackable = false,
 						validator = ((TargetInfo x) => x.Thing is Building_PortalGunPortal && x.Thing != this)
 					},
-					action = delegate (Thing target)
+					action = delegate (LocalTargetInfo targetInfo)
 					{
-						Building_PortalGunPortal otherPortal = target as Building_PortalGunPortal;
+						Building_PortalGunPortal otherPortal = targetInfo.Thing as Building_PortalGunPortal;
 						otherPortal.LinkedPortal = this;
 						this.LinkedPortal = otherPortal;
 					}

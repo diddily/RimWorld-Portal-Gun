@@ -17,7 +17,8 @@ namespace Portal_Gun.Comps
 		public float portalPowerDraw;
 		public float basePowerDraw;
 		public float rechargePowerDraw;
-		public List<VerbProperties> verbs;
+		public List<VerbProperties> GLaDOSVerbs;
+		public List<VerbProperties> defaultVerbs;
 
 		public CompProperties_PortalGun()
 		{

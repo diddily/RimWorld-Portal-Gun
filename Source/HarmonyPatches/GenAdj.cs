@@ -26,7 +26,7 @@ namespace Portal_Gun.HarmonyPatches
 				__result = root.GetThingList(t.Map).OfType<Building_PortalGunPortalEntry>().Where(pe => pe.IsConnected).Select(pe => pe.Exit.Position).Any(p => p.AdjacentTo8WayOrInside(t.Position, t.Rotation, t.def.size));
 				if (__result)
 				{
-					Portal_Gun.Message("AdjacentTo8WayOrInside (" + root + " -> " + t + ") changed result");
+					Portal_Gun.Message(string.Concat("AdjacentTo8WayOrInside (", root, " -> ", t, ") changed result"));
 				}
 			}
 		}

@@ -153,7 +153,7 @@ namespace Portal_Gun
 						{
 							continue;
 						}
-						Portal_Gun.Message(entry.Position + " to " + exit.Position + " path is " + DistanceLookup[entry][exit] + "("+ DistanceLookup[entry][exit].GetCost(DefaultCardinalCost, DefaultDiagonalCost)+")");
+						Portal_Gun.Message(string.Concat(entry.Position, " to ", exit.Position, " path is ", DistanceLookup[entry][exit], "(", DistanceLookup[entry][exit].GetCost(DefaultCardinalCost, DefaultDiagonalCost), ")"));
 					}
 				}
 			}

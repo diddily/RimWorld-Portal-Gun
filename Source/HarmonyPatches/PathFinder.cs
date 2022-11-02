@@ -19,7 +19,7 @@ using Portal_Gun.Jobs;
 namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(PathFinder), "FindPath")]
-	[HarmonyPatch(new Type[] { typeof(IntVec3), typeof(LocalTargetInfo), typeof(TraverseParms), typeof(PathEndMode) })]
+	[HarmonyPatch(new Type[] { typeof(IntVec3), typeof(LocalTargetInfo), typeof(TraverseParms), typeof(PathEndMode), typeof(PathFinderCostTuning) })]
 	public class PathFinder_FindPath
 	{
 		private static FieldInfo mapField = AccessTools.Field(typeof(PathFinder), "map");
@@ -83,8 +83,8 @@ namespace Portal_Gun.HarmonyPatches
 			{
 				if (instructionsList[i].opcode == OpCodes.Stloc_S &&
 					(instructionsList[i + 1].opcode == OpCodes.Ldloca_S || instructionsList[i + 1].opcode == OpCodes.Ldloc_S) && instructionsList[i].operand == instructionsList[i + 1].operand &&
-					instructionsList[i + 2].opcode == OpCodes.Ldfld && instructionsList[i + 2].operand == intVec3XField &&
-					instructionsList[i + 5].opcode == OpCodes.Ldfld && instructionsList[i + 5].operand == intVec3ZField)
+					instructionsList[i + 2].opcode == OpCodes.Ldfld && (FieldInfo)instructionsList[i + 2].operand == intVec3XField &&
+					instructionsList[i + 5].opcode == OpCodes.Ldfld && (FieldInfo)instructionsList[i + 5].operand == intVec3ZField)
 				{
 					cLocal = instructionsList[i].operand;
 				}
@@ -123,7 +123,7 @@ namespace Portal_Gun.HarmonyPatches
 				{
 					loopConditionalIndex = i;
 				}
-				if (instructionsList[i].opcode == OpCodes.Call && instructionsList[i].operand == typeof(GenMath).GetMethod("OctileDistance"))
+				if (instructionsList[i].opcode == OpCodes.Call && (MethodInfo)instructionsList[i].operand == typeof(GenMath).GetMethod("OctileDistance"))
 				{
 					octileDistanceIndex = i;
 					if (instructionsList[i-1].opcode == OpCodes.Ldloc_S)
@@ -136,7 +136,7 @@ namespace Portal_Gun.HarmonyPatches
 					}
 					for (int j = i - 3; j >= 0; --j)
 					{
-						if (instructionsList[j].opcode == OpCodes.Call && instructionsList[j].operand == absMethod && instructionsList[j - 1].opcode == OpCodes.Sub)
+						if (instructionsList[j].opcode == OpCodes.Call && (MethodInfo)instructionsList[j].operand == absMethod && instructionsList[j - 1].opcode == OpCodes.Sub)
 						{
 							if (zInstruction == null)
 							{

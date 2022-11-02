@@ -16,7 +16,7 @@
       <AccuracyMedium>0.85</AccuracyMedium>
       <AccuracyLong>0.75</AccuracyLong>
       <RangedWeapon_Cooldown>2.7</RangedWeapon_Cooldown>
-      <WorkToMake>30000</WorkToMake>
+      <WorkToMake>20000</WorkToMake>
     </statBases>
     <recipeMaker>
       <researchPrerequisite>PG_BasicsResearch</researchPrerequisite>
@@ -24,20 +24,20 @@
         <Crafting>7</Crafting>
       </skillRequirements>
       <recipeUsers Inherit="False">
-        <li>FabricationBench</li>
+        <li>TableMachining</li>
       </recipeUsers>
     </recipeMaker>
     <tickerType>Normal</tickerType>
     <costList>
-      <Plasteel>60</Plasteel>
-      <Silver>200</Silver>
-      <ComponentSpacer>3</ComponentSpacer>
+      <Plasteel>30</Plasteel>
+      <Silver>2</Silver>
+      <ComponentSpacer>1</ComponentSpacer>
     </costList>
     <tradeability>Sellable</tradeability>
     <tradeTags>
       <li>ExoticMisc</li>
     </tradeTags>
-
+    <drawerType>RealtimeOnly</drawerType>
     <building>
       <fixedStorageSettings />
     </building>
@@ -94,7 +94,7 @@
           <texPath>Things/Guns/PortalOffPotato</texPath>
           <graphicClass>Graphic_Single</graphicClass>
         </offGLaDOSGraphic>
-        <verbs>
+        <defaultVerbs>
           <li>
             <targetParams>
               <canTargetLocations>true</canTargetLocations>
@@ -148,7 +148,8 @@
             <accuracyLong>0.85</accuracyLong>
             <consumeFuelPerShot>0.01</consumeFuelPerShot>
           </li>
-
+        </defaultVerbs>
+        <GLaDOSVerbs>
           <li>
             <targetParams>
               <canTargetLocations>true</canTargetLocations>
@@ -202,7 +203,7 @@
             <accuracyLong>0.9925</accuracyLong>
             <consumeFuelPerShot>0.01</consumeFuelPerShot>
           </li>
-        </verbs>
+        </GLaDOSVerbs>
     </li>
 
       <li Class="CompProperties_AffectedByFacilities">

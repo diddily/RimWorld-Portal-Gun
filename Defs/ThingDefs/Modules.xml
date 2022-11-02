@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <!-- Templates -->
+	<ThingDef Name="PG_VanometricPowerCell">
+		<defName>PG_VanometricPowerCell</defName>
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<Mass>0.6</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-4</Beauty>
+			<SellPriceFactor>0.70</SellPriceFactor>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>1000</MarketValue>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<tickerType>Never</tickerType>
+		<alwaysHaulable>true</alwaysHaulable>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<pathCost>10</pathCost>
+		<tradeability>None</tradeability>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<stackLimit>1</stackLimit>
+
+		<label>Portal Gun Vanometric Power Cell</label>
+		<description>A vanometric power cell prepared for use in the creation of a vanometric power module for a Portal Gun.</description>
+		<graphicData>
+			<texPath>Things/Modules/Battery</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+
+	</ThingDef>
+
+	<!-- Templates -->
   <ThingDef Name="PG_BaseModule" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <category>Item</category>
@@ -51,7 +87,7 @@
   <ThingDef Name="PG_IntermediateModule" ParentName="PG_BaseModule" Abstract="True">
     <statBases>
       <WorkToMake>40000</WorkToMake>
-      <MarketValue>4000</MarketValue>
+      <MarketValue>2000</MarketValue>
     </statBases>
     <techLevel>Ultra</techLevel>
     <thingSetMakerTags>
@@ -65,7 +101,7 @@
   <ThingDef Name="PG_AdvancedModule" ParentName="PG_BaseModule" Abstract="True">
     <statBases>
       <WorkToMake>60000</WorkToMake>
-      <MarketValue>6000</MarketValue>
+      <MarketValue>3000</MarketValue>
     </statBases>
     <techLevel>Ultra</techLevel>
     <thingSetMakerTags>

@@ -17,7 +17,6 @@
 		<hediff>Crush</hediff>
 		<hediffSkin>Bruise</hediffSkin>
 		<hediffSolid>Crack</hediffSolid>
-		<explosionCellMote>Mote_BlastDry</explosionCellMote>
 		<combatLogRules>Damage_Stun</combatLogRules>
 	</DamageDef>
 	
@@ -30,7 +29,6 @@
     <hediff>Crush</hediff>
     <hediffSkin>Bruise</hediffSkin>
     <hediffSolid>Crack</hediffSolid>
-		<explosionCellMote>Mote_BlastDry</explosionCellMote>
 		<soundExplosion>ShotPortalOpen</soundExplosion>
 		<combatLogRules>Damage_Stun</combatLogRules>
 	</DamageDef>

@@ -17,7 +17,7 @@ using Portal_Gun.Projectiles;
 namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(Projectile), "Launch")]
-	[HarmonyPatch(new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(Thing), typeof(ThingDef) })]
+	[HarmonyPatch(new Type[] { typeof(Thing), typeof(Vector3), typeof(LocalTargetInfo), typeof(LocalTargetInfo), typeof(ProjectileHitFlags), typeof(bool), typeof(Thing), typeof(ThingDef) })]
 	public class Projectile_Launch
 	{
 		public static void Postfix(ref Projectile __instance, Thing equipment)

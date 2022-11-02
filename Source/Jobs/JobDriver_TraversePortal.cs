@@ -19,14 +19,29 @@ namespace Portal_Gun.Jobs
 		{
 			IntVec3 nextCell = pawn.pather.curPath.Peek(1);
 			Building building = nextCell.GetEdifice(pawn.Map);
-			Portal_Gun.Message(pawn + " nextCell building = " + building);
+			Portal_Gun.Message(string.Concat(pawn, " nextCell building = ", building));
 			if (building != null && building.BlocksPawn(pawn))
 			{
 				Building_Door building_Door = building as Building_Door;
 				if (building_Door == null || !building_Door.FreePassage)
 				{
-					Portal_Gun.Message((pawn.CurJob != null && pawn.CurJob.canBash) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash));
-					if ((pawn.CurJob != null && pawn.CurJob.canBash) || (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash) || pawn.HostileTo(building))
+					Portal_Gun.Message((pawn.CurJob != null && pawn.CurJob.canBashDoors) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBashDoors));
+					if ((pawn.CurJob != null && pawn.CurJob.canBashDoors) || (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBashDoors) || pawn.HostileTo(building))
+					{
+						Job job = new Job(JobDefOf.AttackMelee, building);
+						job.expiryInterval = 300;
+						pawn.jobs.StartJob(job, JobCondition.Incompletable, null, false, true, null, null, false);
+						return;
+					}
+					Portal_Gun.Message("nope");
+					pawn.pather.StopDead();
+					pawn.jobs.curDriver.Notify_PatherFailed();
+					return;
+				}
+
+				if (building.def.IsFence && pawn.def.race.FenceBlocked)
+				{
+					if (pawn.CurJob != null && pawn.CurJob.canBashFences)
 					{
 						Job job = new Job(JobDefOf.AttackMelee, building);
 						job.expiryInterval = 300;

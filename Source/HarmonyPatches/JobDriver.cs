@@ -23,7 +23,7 @@ namespace Portal_Gun.HarmonyPatches
 	{
 		static void Postfix(JobDriver __instance, ref Vector3 drawPos, ref bool behind, ref bool flip)
 		{
-			if (__instance.pawn.equipment.Primary is Item_PortalGun)
+			if (__instance?.pawn?.equipment?.Primary is Item_PortalGun)
 			{
 				if (__instance.pawn.Rotation == Rot4.South)
 				{

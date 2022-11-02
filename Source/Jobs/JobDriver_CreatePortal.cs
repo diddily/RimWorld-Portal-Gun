@@ -22,7 +22,7 @@ namespace Portal_Gun.Jobs
 			{
 				this.FailOnDespawnedOrNull(TargetIndex.A);
 				this.FailOn(() => pawn.Dead);
-				yield return Toils_Combat.GotoCastPosition(TargetIndex.A, false, 1f);
+				yield return Toils_Combat.GotoCastPosition(TargetIndex.A, TargetIndex.A, false, 1f);
 				yield return Toils_Combat.CastVerb(TargetIndex.A, true);
 				yield return Toils_General.Do(delegate {
 					finished = true;						//ended = true;

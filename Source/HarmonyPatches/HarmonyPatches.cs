@@ -29,17 +29,6 @@ namespace Portal_Gun.HarmonyPatches
 			Harmony harmony = new Harmony("diddily.Portal_Gun");
 #endif
 			{
-				Type type = typeof(Verse.CompEquippable);
-				MethodInfo originalMethod = AccessTools.Method(type, "GetVerbsCommands");
-				HarmonyMethod patchMethod = new HarmonyMethod(typeof(HarmonyPatches).GetMethod(nameof(Patch_GetVerbsCommands)));
-				harmony.Patch(
-					originalMethod,
-					null,
-					patchMethod,
-					null);
-			}
-
-			{
 				Type type = typeof(Verse.Pawn);
 				MethodInfo originalMethod = AccessTools.Method(type, "TryGetAttackVerb");
 				HarmonyMethod patchMethod = new HarmonyMethod(typeof(HarmonyPatches).GetMethod(nameof(Patch_TryGetAttackVerb)));
@@ -87,14 +76,6 @@ namespace Portal_Gun.HarmonyPatches
 
 		}
 
-		public static void Patch_GetVerbsCommands(ref IEnumerable<Command> __result, Verse.CompEquippable __instance)
-		{
-			//if (__instance.parent is Item_PortalGun)
-			//{
-			//	__result = __result.Concat(((Item_PortalGun)__instance.parent).GetCommands());
-			//}
-		}
-
 		public static bool Patch_TryGetAttackVerb(Pawn __instance, Thing target, bool allowManualCastWeapons)
 		{
 			if (__instance.equipment != null && __instance.equipment.Primary != null && __instance.equipment.Primary is Item_PortalGun)
@@ -112,14 +93,18 @@ namespace Portal_Gun.HarmonyPatches
 				__result = true;
 			}
 		}
-
+		public static bool Patch_PostLoad(ThingDef __instance)
+		{
+			Log.Error(__instance.defName);
+			return true;
+		}
 		public static void Patch_BuildingBlockingNextPathCell(ref Building __result, ref Pawn_PathFollower __instance, ref Pawn ___pawn)
 		{
-			if (__result != null && __instance.curPath.NodesLeftCount > 1)
+			if (__result != null && __instance.curPath != null && __instance.curPath.NodesLeftCount > 1)
 			{
 				Pawn_PathFollower instance = __instance;
 				Pawn pawn = ___pawn;
-				Building_PortalGunPortal portal1 = instance.nextCell.GetThingList(pawn.Map).OfType<Building_PortalGunPortal>().Where(p => p.LinkedPortal.Position == instance.curPath.Peek(1)).FirstOrDefault();
+				Building_PortalGunPortalEntry portal1 = instance.nextCell.GetThingList(pawn.Map).OfType<Building_PortalGunPortalEntry>().Where(p => p.IsConnected && p.Exit.Position == instance.curPath.Peek(1)).FirstOrDefault();
 				if (portal1 != null)
 				{
 					__result = null;

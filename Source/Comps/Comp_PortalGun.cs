@@ -12,6 +12,7 @@ namespace Portal_Gun.Comps
 {
 	public class Comp_PortalGun : CompChangeableProjectile
 	{
+
 		public CompProperties_PortalGun PG_Props => props as CompProperties_PortalGun;
 
 		public bool IsSecondary

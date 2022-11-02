@@ -19,7 +19,7 @@ using Portal_Gun.Projectiles;
 
 namespace Portal_Gun.Items
 {
-	public class Item_PortalGun : ThingWithComps, IThingHolder
+	public class Item_PortalGun : ThingWithComps, IThingHolder, IVerbOwner
 	{
 		public bool isSecondary;
 
@@ -27,7 +27,6 @@ namespace Portal_Gun.Items
 		public Building_PortalGunPortal primaryPortal;
 		public Building_PortalGunPortal secondaryPortal;
 		
-		private List<Verb> verbs;
 		private VerbTracker fakeVerbTracker;
 
 		private Comp_PortalGun compPortalGun => GetComp<Comp_PortalGun>();
@@ -45,7 +44,21 @@ namespace Portal_Gun.Items
 		private float __powerCapacity = 1.0f;
 		private float __powerMultiply = 1.0f;
 		private bool __hasExternalPower;
-
+		public List<VerbProperties> VerbProperties
+		{
+			get
+			{
+				if (HasGLaDOSModule)
+				{
+					return compPortalGun.PG_Props.GLaDOSVerbs;
+				}
+				return compPortalGun.PG_Props.defaultVerbs;
+			}
+		}
+		public List<Tool> Tools => def.tools;
+		public VerbTracker VerbTracker => fakeVerbTracker;
+		Thing IVerbOwner.ConstantCaster => base.SpawnedParentOrMe;
+		ImplementOwnerTypeDef IVerbOwner.ImplementOwnerTypeDef => ImplementOwnerTypeDefOf.Weapon;
 		public Item_PortalGun()
 		{
 			innerContainer = new ThingOwner<Thing>(this);
@@ -137,11 +150,11 @@ namespace Portal_Gun.Items
 		{
 			get
 			{
-				if (verbs == null)
+				if (fakeVerbTracker == null)
 				{
-					InitVerbsFromZero();
+					fakeVerbTracker = new VerbTracker(compEquippable);
 				}
-				return verbs;
+				return fakeVerbTracker.AllVerbs;
 			}
 		}
 
@@ -186,6 +199,15 @@ namespace Portal_Gun.Items
 					}
 				}
 			}
+		}
+		string IVerbOwner.UniqueVerbOwnerID()
+		{
+			return ((IVerbOwner)compEquippable).UniqueVerbOwnerID();
+		}
+
+		bool IVerbOwner.VerbsStillUsableBy(Pawn p)
+		{
+			return ((IVerbOwner)compEquippable).VerbsStillUsableBy(p);
 		}
 
 		public void ClearPortals()
@@ -333,7 +355,7 @@ namespace Portal_Gun.Items
 
 			if (success && GenGrid.Impassable(entryPos, map))
 			{
-				Portal_Gun.Message("Facing = " + facing + " Offset = " + offset + "("+ offset.AngleFlat()+")");
+				Portal_Gun.Message(string.Concat("Facing = ", facing, " Offset = ", offset, "(", offset.AngleFlat(), ")"));
 				if (!isWall)
 				{
 					messageText = "PG_SurfaceIncompatible_LocationBlocked";
@@ -575,8 +597,7 @@ namespace Portal_Gun.Items
 				compRefuelable.ConsumeFuel(-deltaFuel);
 			}
 
-			verbs = null;
-			fakeVerbTracker = null;
+			fakeVerbTracker?.VerbsNeedReinitOnLoad();
 		}
 
 		public void AddModule(Thing thing)
@@ -632,15 +653,14 @@ namespace Portal_Gun.Items
 			{
 				yield return gizmo;
 			}
-			if (this.verbs == null)
+			if (fakeVerbTracker == null)
 			{
-				InitVerbsFromZero();
+				fakeVerbTracker = new VerbTracker(compEquippable);
 			}
 
-
-			for (int i = 0; i < verbs.Count; i++)
+			for (int i = 0; i < fakeVerbTracker.AllVerbs.Count; i++)
 			{
-				Verb verb = verbs[i];
+				Verb verb = fakeVerbTracker.AllVerbs[i];
 				if (verb.verbProps.hasStandardCommand)
 				{
 					Command_VerbTarget command_VerbTarget = new Command_VerbTarget();
@@ -699,20 +719,6 @@ namespace Portal_Gun.Items
 			};*/
 		}
 
-		private void InitVerbsFromZero()
-		{
-			verbs = new List<Verb>();
-			fakeVerbTracker = new VerbTracker(compEquippable);
-			InitVerbs(delegate (Type type, string id)
-			{
-				Verb verb = (Verb)Activator.CreateInstance(type);
-				verbs.Add(verb);
-				return verb;
-			});
-
-			AccessTools.Field(typeof(VerbTracker), "verbs").SetValue(fakeVerbTracker, verbs);
-		}
-
 		public FloatMenuOption GetFloatOptionForModule(Pawn selPawn, Thing module)
 		{
 			FloatMenuOption useopt = new FloatMenuOption("PG_RemoveModule".Translate() + ": " + module.Label, delegate
@@ -733,7 +739,7 @@ namespace Portal_Gun.Items
 			{
 				yield return o;
 			}
-			if (!selPawn.CanReach(this, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
+			if (!selPawn.CanReach(this, PathEndMode.Touch, Danger.Deadly, false, false, TraverseMode.ByPawn))
 			{
 				yield return new FloatMenuOption("PG_RemoveModule".Translate() + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null);
 			}
@@ -753,44 +759,6 @@ namespace Portal_Gun.Items
 				}
 			}
 
-		}
-
-		private void InitVerbs(Func<Type, string, Verb> creator)
-		{
-			List<VerbProperties> verbProperties = compPortalGun.PG_Props.verbs;
-			if (verbProperties != null)
-			{
-				int startIndex = (HasGLaDOSModule ? 2 : 0);
-				for (int i = startIndex; i < startIndex + 2; i++)
-				{
-					try
-					{
-						VerbProperties verbProperties2 = verbProperties[i];
-						string text = Verb.CalculateUniqueLoadID(GetComp<CompEquippable>(), i);
-						this.InitVerb(creator(verbProperties2.verbClass, text), verbProperties2, null, null, text);
-					}
-					catch (Exception ex)
-					{
-						Log.Error(string.Concat(new object[]
-						{
-							"Could not instantiate Verb (fakeOwner=",
-							compEquippable.ToStringSafe<IVerbOwner>(),
-							"): ",
-							ex
-						}), false);
-					}
-				}
-			}
-		}
-
-		private void InitVerb(Verb verb, VerbProperties properties, Tool tool, ManeuverDef maneuver, string id)
-		{
-			verb.loadID = id;
-			verb.verbProps = properties;
-			verb.verbTracker = fakeVerbTracker;
-			verb.tool = tool;
-			verb.maneuver = maneuver;
-			verb.caster = SpawnedParentOrMe;
 		}
 
 		public override void ExposeData()

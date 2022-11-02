@@ -39,17 +39,17 @@ namespace Portal_Gun.HarmonyPatches
 						IntVec3 primaryPosition = primaryPortalEntry.Position;
 						IntVec3 secondaryPosition = primaryPortalEntry.linkedPortal.LinkedPortal.linkedEntry.Position;
 
-						Portal_Gun.Message("Link attempt for " + primaryPosition + " to " + secondaryPosition);
+						Portal_Gun.Message(string.Concat("Link attempt for ", primaryPosition, " to ", secondaryPosition));
 						if (primaryPosition.InBounds(map) && secondaryPosition.InBounds(map))
 						{
 							Region primaryRegion = map.regionGrid.GetRegionAt_NoRebuild_InvalidAllowed(primaryPosition);
 							Region secondaryRegion = map.regionGrid.GetRegionAt_NoRebuild_InvalidAllowed(secondaryPosition);
-							Portal_Gun.Message("primaryRegion " + primaryRegion + " secondaryRegion " + secondaryRegion);
+							Portal_Gun.Message(string.Concat("primaryRegion ", primaryRegion, " secondaryRegion ", secondaryRegion));
 							if (primaryRegion != null && secondaryRegion != null && primaryRegion != secondaryRegion)
 							{
 								EdgeSpan span = new EdgeSpan(primaryPosition, SpanDirection.East, 0);
 								RegionLink regionLink = map.regionLinkDatabase.LinkFrom(span);
-								Portal_Gun.Message("regionLink.RegionA " + regionLink.RegionA + " regionLink.RegionB " + regionLink.RegionB);
+								Portal_Gun.Message(string.Concat("regionLink.RegionA ", regionLink.RegionA, " regionLink.RegionB ", regionLink.RegionB));
 								if (regionLink.RegionA == null && regionLink.RegionB == null)
 								{
 									regionLink.Register(primaryRegion);

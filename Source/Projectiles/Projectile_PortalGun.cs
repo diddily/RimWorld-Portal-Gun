@@ -14,7 +14,7 @@ namespace Portal_Gun.Projectiles
 	{
 		public Item_PortalGun launcherGun;
 
-		protected override void Impact(Thing hitThing)
+		protected override void Impact(Thing hitThing, bool blockedByShield = false)
 		{
 			Vector3 offset = (origin - ExactPosition);
 			IntVec3 position = (hitThing != null ? hitThing.Position : Position);
@@ -33,7 +33,7 @@ namespace Portal_Gun.Projectiles
 				}
 			}
 
-			base.Impact(hitThing);
+			base.Impact(hitThing, blockedByShield);
 		}
 
 		public override void ExposeData()

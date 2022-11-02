@@ -33,6 +33,8 @@ namespace Portal_Gun
 		public static ResearchProjectDef PG_IntermediateModulesResearch;
 		public static ResearchProjectDef PG_AdvancedModulesResearch;
 
+		public static RecipeDef PG_Craft_VanometricPowerCell;
+
 		public static SoundDef PG_ChargeLoop;
 		public static SoundDef PG_PortalGunOutOfPower;
 	}

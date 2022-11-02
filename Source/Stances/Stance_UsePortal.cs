@@ -23,7 +23,9 @@ namespace Portal_Gun.Stances
 		Building_PortalGunPortalEntry portalExit;
 		private static float wallScale = -0.5f;
 		private static Vector3 floorOffset = new Vector3(0f, 0f, 0.25f);
-
+		public Stance_UsePortal()
+		{
+		}
 		public Stance_UsePortal(int _tickTotal, Building_PortalGunPortalEntry _portalEntry, Building_PortalGunPortalEntry _portalExit)
 		{
 			tickCount = 0;
@@ -66,9 +68,24 @@ namespace Portal_Gun.Stances
 					Building_Door building_Door = building as Building_Door;
 					if (building_Door == null || !building_Door.FreePassage)
 					{
-						Portal_Gun.Message((pawn.CurJob != null && pawn.CurJob.canBash) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash));
-						if ((pawn.CurJob != null && pawn.CurJob.canBash) || (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBash) || pawn.HostileTo(building))
+						Portal_Gun.Message((pawn.CurJob != null && pawn.CurJob.canBashDoors) + " || " + (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBashDoors));
+						if ((pawn.CurJob != null && pawn.CurJob.canBashDoors) || (pawn.jobs.jobQueue.Count > 0 && pawn.jobs.jobQueue.Peek().job.canBashDoors) || pawn.HostileTo(building))
 						{
+							Job job = new Job(JobDefOf.AttackMelee, building);
+							job.expiryInterval = 300;
+							pawn.jobs.StartJob(job, JobCondition.Incompletable, null, false, true, null, null, false);
+							return false;
+						}
+						Portal_Gun.Message("nope");
+						pawn.pather.StopDead();
+						pawn.jobs.curDriver.Notify_PatherFailed();
+						return false;
+					}
+
+					if (building.def.IsFence && pawn.def.race.FenceBlocked)
+					{
+						if (pawn.CurJob != null && pawn.CurJob.canBashFences)
+						{ 
 							Job job = new Job(JobDefOf.AttackMelee, building);
 							job.expiryInterval = 300;
 							pawn.jobs.StartJob(job, JobCondition.Incompletable, null, false, true, null, null, false);

@@ -17,7 +17,7 @@ using UnityEngine;
 namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(FloatMenuMakerMap), "AddDraftedOrders")]
-	[HarmonyPatch(new Type[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>) })]
+	[HarmonyPatch(new Type[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>), typeof(bool) })]
 	public class FloatMenuMakerMap_AddDraftedOrders
 	{
 		public static ThingWithComps get_Primary_NonPortalGun(Pawn_EquipmentTracker tracker)
@@ -39,7 +39,7 @@ namespace Portal_Gun.HarmonyPatches
 			var instructionsList = new List<CodeInstruction>(instructions);
 			for (int i = 0; i < instructionsList.Count; ++i)
 			{
-				if (instructionsList[i].opcode == OpCodes.Callvirt && instructionsList[i].operand == typeof(Pawn_EquipmentTracker).GetMethod("get_Primary"))
+				if (instructionsList[i].opcode == OpCodes.Callvirt && (MethodInfo)instructionsList[i].operand == typeof(Pawn_EquipmentTracker).GetMethod("get_Primary"))
 				{
 					foundCall = true;
 					yield return new CodeInstruction(OpCodes.Call, typeof(FloatMenuMakerMap_AddDraftedOrders).GetMethod("get_Primary_NonPortalGun"));

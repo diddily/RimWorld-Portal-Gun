@@ -326,7 +326,7 @@
             <li>Gold</li>
           </thingDefs>
         </filter>
-        <count>10</count>
+        <count>1</count>
       </li>
       <li>
         <filter>
@@ -390,7 +390,7 @@
             <li>Gold</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>2</count>
       </li>
       <li>
         <filter>
