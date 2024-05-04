@@ -258,3 +258,11 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+v1.2/Assemblies/Portal_Gun.dll
+v1.2/Defs/RecipeDefs/Recipes.xml
+v1.3/Assemblies/Portal_Gun.dll
+v1.3/Defs/RecipeDefs/Recipes.xml
+v1.4/Assemblies/Portal_Gun.dll
+v1.4/Defs/RecipeDefs/Recipes.xml
+v1.5/Assemblies/Portal_Gun.dll
+v1.5/Defs/RecipeDefs/Recipes.xml

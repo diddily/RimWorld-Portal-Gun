@@ -13,7 +13,7 @@ namespace Portal_Gun.Stances
 	public class Stance_UsePortal : Stance_Mobile
 	{
 		public int tickCount;
-		public int tickTotal;
+		public float tickTotal;
 		public Vector3 curOffset = new Vector3(0f, 0f, 0f);
 		private Vector3 entryOffset = new Vector3(0f, 0f, 0f);
 		bool entryFloor;
@@ -26,7 +26,7 @@ namespace Portal_Gun.Stances
 		public Stance_UsePortal()
 		{
 		}
-		public Stance_UsePortal(int _tickTotal, Building_PortalGunPortalEntry _portalEntry, Building_PortalGunPortalEntry _portalExit)
+		public Stance_UsePortal(float _tickTotal, Building_PortalGunPortalEntry _portalEntry, Building_PortalGunPortalEntry _portalExit)
 		{
 			tickCount = 0;
 			tickTotal = Math.Max(4, _tickTotal);
@@ -162,7 +162,7 @@ namespace Portal_Gun.Stances
 				return;
 			}
 
-			int midway = tickTotal / 2;
+			int midway = (int)tickTotal / 2;
 			if (tickCount >= midway && (portalEntry.DestroyedOrNull() || !portalEntry.Spawned || portalExit.DestroyedOrNull() || !portalExit.Spawned))
 			{
 				stanceTracker.SetStance(new Stance_Mobile());
@@ -197,7 +197,7 @@ namespace Portal_Gun.Stances
 		{
 			base.ExposeData();
 			Scribe_Values.Look<int>(ref tickCount, "tickCount");
-			Scribe_Values.Look<int>(ref tickTotal, "tickTotal");
+			Scribe_Values.Look<float>(ref tickTotal, "tickTotal");
 			Scribe_Values.Look<bool>(ref entryFloor, "entryFloor");
 			Scribe_Values.Look<bool>(ref exitFloor, "exitFloor");
 			Scribe_Values.Look<Vector3>(ref curOffset, "curOffset");

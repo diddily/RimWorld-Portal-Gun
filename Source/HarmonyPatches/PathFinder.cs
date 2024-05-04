@@ -61,13 +61,16 @@ namespace Portal_Gun.HarmonyPatches
 			Label loopStartLabel = new Label();
 			MethodInfo getPortalsMethod = typeof(PathFinder_FindPath).GetMethod("GetPortals");
 			MethodInfo absMethod = typeof(Math).GetMethod("Abs", new Type[] { typeof(Int32) });
+			MethodInfo roundToIntMethod = typeof(Mathf).GetMethod("RoundToInt", new Type[] { typeof(float) });
 			MethodInfo listGetCountMethod = typeof(PathFinder_FindPath).GetMethod("GetPortalsCount");
 			MethodInfo entryGetXMethod = typeof(PathFinder_FindPath).GetMethod("GetExitX");
 			MethodInfo entryGetZMethod = typeof(PathFinder_FindPath).GetMethod("GetExitZ");
 
 			object cLocal = null;
 			CodeInstruction num9Instruction = null;
+			CodeInstruction num9bInstruction = null;
 			CodeInstruction num10Instruction = null;
+			CodeInstruction num10bInstruction = null;
 			object num11Local = null;
 			object num12Local = null;
 			CodeInstruction num13Instruction = null;
@@ -126,13 +129,21 @@ namespace Portal_Gun.HarmonyPatches
 				if (instructionsList[i].opcode == OpCodes.Call && (MethodInfo)instructionsList[i].operand == typeof(GenMath).GetMethod("OctileDistance"))
 				{
 					octileDistanceIndex = i;
-					if (instructionsList[i-1].opcode == OpCodes.Ldloc_S)
+					if (instructionsList[i - 1].opcode == OpCodes.Call && (MethodInfo)instructionsList[i - 1].operand == roundToIntMethod)
 					{
-						num10Instruction = instructionsList[i - 1];
+						num10bInstruction = instructionsList[i - 1];
 					}
 					if (instructionsList[i - 2].opcode == OpCodes.Ldloc_S)
 					{
-						num9Instruction = instructionsList[i - 2];
+						num10Instruction = instructionsList[i - 2];
+					}
+					if (instructionsList[i - 3].opcode == OpCodes.Call && (MethodInfo)instructionsList[i - 3].operand == roundToIntMethod)
+					{
+						num9bInstruction = instructionsList[i - 3];
+					}
+					if (instructionsList[i - 4].opcode == OpCodes.Ldloc_S)
+					{
+						num9Instruction = instructionsList[i - 4];
 					}
 					for (int j = i - 3; j >= 0; --j)
 					{
@@ -162,9 +173,17 @@ namespace Portal_Gun.HarmonyPatches
 			{
 				missingParts.Add("num9Instruction");
 			}
+			if (num9bInstruction == null)
+			{
+				missingParts.Add("num9bInstruction");
+			}
 			if (num10Instruction == null)
 			{
 				missingParts.Add("num10Instruction");
+			}
+			if (num10bInstruction == null)
+			{
+				missingParts.Add("num10bInstruction");
 			}
 			if (num11Local == null)
 			{
@@ -291,7 +310,9 @@ namespace Portal_Gun.HarmonyPatches
 						yield return xInstruction;
 						yield return zInstruction;
 						yield return num9Instruction;
+						yield return num9bInstruction;
 						yield return num10Instruction;
+						yield return num10bInstruction;
 						yield return new CodeInstruction(OpCodes.Call, typeof(Utilities).GetMethod("CalculateOctileDistance"));
 						continue;
 					}

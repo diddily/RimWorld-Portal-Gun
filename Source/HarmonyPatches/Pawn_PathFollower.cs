@@ -43,7 +43,7 @@ namespace Portal_Gun.HarmonyPatches
 					{
 						building_Door.Notify_PawnApproaching(pawn, job.count);
 					}*/
-					int cost = CostToMoveIntoPortal(pawn, portalEntry.linkedPortal.Position);
+					float cost = CostToMoveIntoPortal(pawn, portalEntry.linkedPortal.Position);
 					Stance_UsePortal stancePortal = new Stance_UsePortal(cost, portalEntry, portalEntry.Exit);
 					pawn.stances.SetStance(stancePortal);
 					__instance.nextCellCostTotal = cost / 2 + 1;
@@ -57,9 +57,9 @@ namespace Portal_Gun.HarmonyPatches
 			return true;
 		}
 
-		private static int CostToMoveIntoPortal(Pawn pawn, IntVec3 c)
+		private static float CostToMoveIntoPortal(Pawn pawn, IntVec3 c)
 		{
-			int num;
+			float num;
 			if (c.x == pawn.Position.x || c.z == pawn.Position.z)
 			{
 				num = pawn.TicksPerMoveCardinal;
@@ -76,7 +76,7 @@ namespace Portal_Gun.HarmonyPatches
 				Pawn locomotionUrgencySameAs = pawn.jobs.curDriver.locomotionUrgencySameAs;
 				if (locomotionUrgencySameAs != null && locomotionUrgencySameAs != pawn && locomotionUrgencySameAs.Spawned)
 				{
-					int num2 = CostToMoveIntoPortal(locomotionUrgencySameAs, c);
+					float num2 = CostToMoveIntoPortal(locomotionUrgencySameAs, c);
 					if (num < num2)
 					{
 						num = num2;

@@ -18,19 +18,18 @@ using Portal_Gun.Items;
 using Portal_Gun.Jobs;
 namespace Portal_Gun.HarmonyPatches
 {
-	[HarmonyPatch(typeof(PawnRenderer), "CarryWeaponOpenly")]
-	class PawnRenderer_CarryWeaponOpenly
+	[HarmonyPatch(typeof(PawnRenderUtility), "CarryWeaponOpenly")]
+	class PawnRenderUtility_CarryWeaponOpenly
 	{
-		static void Postfix(ref bool __result, PawnRenderer __instance, Pawn ___pawn)
+		static void Postfix(ref bool __result, ref Pawn pawn)
 		{
-			if (!__result && ___pawn.carryTracker != null && ___pawn.carryTracker.CarriedThing != null)
+			if (!__result && pawn.carryTracker != null && pawn.carryTracker.CarriedThing != null)
 			{
-				if (___pawn.equipment.Primary is Item_PortalGun)
+				if (pawn.equipment.Primary is Item_PortalGun)
 				{
 					Vector3 dummy = Vector3.zero;
 					bool dummy1 = false;
-					bool dummy2 = false;
-					if (___pawn.CurJob == null || !___pawn.jobs.curDriver.ModifyCarriedThingDrawPos(ref dummy, ref dummy1, ref dummy2))
+					if (pawn.CurJob == null || !pawn.jobs.curDriver.ModifyCarriedThingDrawPos(ref dummy, ref dummy1))
 					{
 						__result = true;
 					}
@@ -39,17 +38,17 @@ namespace Portal_Gun.HarmonyPatches
 		}
 	}
 
-	[HarmonyPatch(typeof(PawnRenderer), "DrawEquipmentAiming")]
-	class PawnRenderer_DrawEquipmentAiming
+	[HarmonyPatch(typeof(PawnRenderUtility), "DrawEquipmentAiming")]
+	class PawnRenderUtility_DrawEquipmentAiming
 	{
-		static bool Prefix(Pawn ___pawn, Thing eq, Vector3 drawLoc, ref float aimAngle)
+		static bool Prefix(Thing eq, Vector3 drawLoc, ref float aimAngle)
 		{
-			if (eq is Item_PortalGun && ___pawn.carryTracker != null && ___pawn.carryTracker.CarriedThing != null)
+			Item_PortalGun portal_gun = eq as Item_PortalGun;
+			if (eq is Item_PortalGun && portal_gun.holder.carryTracker != null && portal_gun.holder.carryTracker.CarriedThing != null)
 			{
 				Vector3 dummy = Vector3.zero;
 				bool dummy1 = false;
-				bool dummy2 = false;
-				if (___pawn.CurJob == null || !___pawn.jobs.curDriver.ModifyCarriedThingDrawPos(ref dummy, ref dummy1, ref dummy2))
+				if (portal_gun.holder.CurJob == null || !portal_gun.holder.jobs.curDriver.ModifyCarriedThingDrawPos(ref dummy, ref dummy1))
 				{
 					if (aimAngle == 143f)
 					{
@@ -62,6 +61,23 @@ namespace Portal_Gun.HarmonyPatches
 				}
 			}
 			return true;
+		}
+	}
+
+	[HarmonyPatch(typeof(PawnRenderNodeWorker_Carried), "PostDraw")]
+	class PawnRenderNodeWorker_Carried_PostDraw
+	{
+		static void Postfix(ref PawnRenderNodeWorker_Carried __instance, PawnRenderNode node, PawnDrawParms parms, Mesh mesh, Matrix4x4 matrix)
+		{
+			if (parms.pawn.carryTracker?.CarriedThing != null)
+			{
+				if (parms.pawn.equipment.Primary is Item_PortalGun)
+				{
+					Vector3 pivot;
+					Vector3 vector = parms.matrix.Position() + __instance.OffsetFor(node, parms, out pivot);
+					PawnRenderUtility.DrawEquipmentAndApparelExtras(parms.pawn, vector, parms.facing, parms.flags);
+				}
+			}
 		}
 	}
 }

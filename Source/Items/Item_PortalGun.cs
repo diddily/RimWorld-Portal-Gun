@@ -26,7 +26,9 @@ namespace Portal_Gun.Items
 		private ThingOwner innerContainer;
 		public Building_PortalGunPortal primaryPortal;
 		public Building_PortalGunPortal secondaryPortal;
-		
+
+		public Pawn holder => compEquippable.PrimaryVerb.CasterPawn;
+
 		private VerbTracker fakeVerbTracker;
 
 		private Comp_PortalGun compPortalGun => GetComp<Comp_PortalGun>();
@@ -35,6 +37,8 @@ namespace Portal_Gun.Items
 		private CompRefuelable compRefuelable => GetComp<CompRefuelable>();
 
 		private CompRefuelable fakeRefuelable;
+
+		private GameConditionDef solarFlare = GameConditionDef.Named("SolarFlare");
 
 		// Updated by tick
 		private float __powerRequired;
@@ -342,7 +346,7 @@ namespace Portal_Gun.Items
 							messageText = "PG_SurfaceIncompatible_TooRough";
 							requiredSurfaceLevel = 1;
 						}
-						else if (terrain.affordances.Contains(TerrainAffordanceDefOf.Diggable))
+						else if (terrain.affordances.ContainsAny(a => a.label == "diggable"))
 						{
 							messageText = "PG_SurfaceIncompatible_TooLoose";
 							requiredSurfaceLevel = 2;
@@ -515,7 +519,7 @@ namespace Portal_Gun.Items
 				__powerRequired += compPortalGun.PG_Props.portalPowerDraw * secondaryPortal.powerDrawScale * Portal_Gun.portalPowerDrawMultiplier;
 			}
 
-			if ((primaryPortal != null || secondaryPortal != null) && Map != null && Map.gameConditionManager.ConditionIsActive(GameConditionDefOf.SolarFlare) && !HasSolarFlareProtection)
+			if ((primaryPortal != null || secondaryPortal != null) && Map != null && (Map.gameConditionManager.ConditionIsActive(solarFlare) || Map.gameConditionManager.ConditionIsActive(GameConditionDefOf.EMIField)) && !HasSolarFlareProtection)
 			{
 				PG_DefOf.PG_PortalGunOutOfPower.PlayOneShot(new TargetInfo(this));
 				ClearPortals();
@@ -680,7 +684,7 @@ namespace Portal_Gun.Items
 					{
 						command_VerbTarget.Disable("PG_NotEnoughPower".Translate());
 					}
-					else if (Map != null && Map.gameConditionManager.ConditionIsActive(GameConditionDefOf.SolarFlare) && !HasSolarFlareProtection)
+					else if (Map != null && (Map.gameConditionManager.ConditionIsActive(solarFlare) || Map.gameConditionManager.ConditionIsActive(GameConditionDefOf.EMIField)) && !HasSolarFlareProtection)
 					{
 						command_VerbTarget.Disable("PG_SolarFlareInterference".Translate());
 					}

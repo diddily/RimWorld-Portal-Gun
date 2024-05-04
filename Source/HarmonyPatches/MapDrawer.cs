@@ -18,10 +18,10 @@ using UnityEngine;
 namespace Portal_Gun.HarmonyPatches
 {
 	[HarmonyPatch(typeof(MapDrawer), "MapMeshDirty")]
-	[HarmonyPatch(new Type[] { typeof(IntVec3), typeof(MapMeshFlag), typeof(bool), typeof(bool) })]
+	[HarmonyPatch(new Type[] { typeof(IntVec3), typeof(ulong), typeof(bool), typeof(bool) })]
 	public class MapDrawer_MapMeshDirty
 	{
-		static void Postfix(IntVec3 loc, MapMeshFlag dirtyFlags, bool regenAdjacentCells, bool regenAdjacentSections, Map ___map)
+		static void Postfix(IntVec3 loc, ulong dirtyFlags, bool regenAdjacentCells, bool regenAdjacentSections, Map ___map)
 		{
 		/*	List<Thing> things = loc.GetThingList(___map);
 			bool hasPortal = things.Any(t => t is Building_PortalGunPortal || t is Building_PortalGunPortalEntry);
